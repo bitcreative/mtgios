@@ -40,9 +40,12 @@
                         progress:nil
                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheTYpe, BOOL finished, NSURL *url) {
                            if (image) {
-                               CGFloat scale = self.bounds.size.width / image.size.width;
+                               CGFloat scale = self.setImage.bounds.size.width / image.size.width;
                                CGSize size = {image.size.width * scale, image.size.height * scale};
+                               CGRect frame = CGRectMake(self.setImage.frame.origin.x, self.setImage.frame.origin.x,
+                                       size.width, size.height);
                                UIImage *resizedImage = [image imageToFitSize:size method:MGImageResizeScale];
+                               self.setImage.frame = frame;
                                self.setImage.image = resizedImage;
 
                                [UIView animateWithDuration:0.5 animations:^{

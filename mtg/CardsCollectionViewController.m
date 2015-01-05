@@ -8,74 +8,64 @@
 
 #import <CSStickyHeaderFlowLayout.h>
 
-#import "CardsViewController.h"
+#import "CardsCollectionViewController.h"
 #import "CardCollectionHeaderView.h"
 #import "CardCollectionViewCell.h"
 
 #import "Store.h"
 
-@interface CardsViewController () {
+@interface CardsCollectionViewController () {
     Store *store;
+    NSDictionary *set;
 }
 
 @end
 
-@implementation CardsViewController
+@implementation CardsCollectionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     store = [Store sharedStore];
-    
+    set = [store setWithName:self.setName];
+
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
 
-    [self setNeedsStatusBarAppearanceUpdate];
+    self.title = set[@"name"];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
-
 #pragma mark - UICollectionViewDataSource
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CardCollectionViewCell *cell = (CardCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"card" forIndexPath:indexPath];
-    [cell setupCellAtIndexPath:indexPath];
+    CardCollectionViewCell *cell = (CardCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"card"
+                                                                                                       forIndexPath:indexPath];
+    [cell setupCellAtIndexPath:indexPath forSet:set];
     return cell;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [store cardsForSet:[[store sets] objectAtIndex:section]].count;
+    return [store cardsForSet:self.setName].count;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return [store sets].count;
-}
-
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-        CardCollectionHeaderView *cell = (CardCollectionHeaderView *)[collectionView dequeueReusableSupplementaryViewOfKind:kind
-                                                                            withReuseIdentifier:@"header"
-                                                                                    forIndexPath:indexPath];
-        NSDictionary *set = [store setWithName:[[store sets] objectAtIndex:indexPath.section]];
-        cell.label.text = set[@"name"];
-        return cell;
-    }
-    
-    return nil;
+    return 1;
 }
 
 #pragma mark - UICollectionFlowLayoutDelegate
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat width = self.collectionView.contentSize.width;
-    CGFloat size = width / 4;
-    return CGSizeMake(size, size + 40);
+    CGFloat size = width / 3;
+    return CGSizeMake(size - 24, size + 50);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
@@ -87,9 +77,10 @@
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(8, 8, 8, 8);
+    return UIEdgeInsetsMake(8, 8, 0, 8);
 }
 
 #pragma mark - UICollectionViewDelegate
+
 
 @end

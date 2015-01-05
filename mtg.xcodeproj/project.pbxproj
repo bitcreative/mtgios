@@ -10,7 +10,7 @@
 		14581EE80E01D5586428D350 /* libPods-mtg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 324A5DD15157CBF6F27121D4 /* libPods-mtg.a */; };
 		663D52A01A58A3BD00222845 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D529F1A58A3BD00222845 /* main.m */; };
 		663D52A31A58A3BD00222845 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D52A21A58A3BD00222845 /* AppDelegate.m */; };
-		663D52A61A58A3BD00222845 /* CardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D52A51A58A3BD00222845 /* CardsViewController.m */; };
+		663D52A61A58A3BD00222845 /* CardsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D52A51A58A3BD00222845 /* CardsCollectionViewController.m */; };
 		663D52A91A58A3BD00222845 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 663D52A71A58A3BD00222845 /* Main.storyboard */; };
 		663D52AB1A58A3BD00222845 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 663D52AA1A58A3BD00222845 /* Images.xcassets */; };
 		663D52AE1A58A3BD00222845 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 663D52AC1A58A3BD00222845 /* LaunchScreen.xib */; };
@@ -46,8 +46,8 @@
 		663D529F1A58A3BD00222845 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		663D52A11A58A3BD00222845 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		663D52A21A58A3BD00222845 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		663D52A41A58A3BD00222845 /* CardsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardsViewController.h; sourceTree = "<group>"; };
-		663D52A51A58A3BD00222845 /* CardsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardsViewController.m; sourceTree = "<group>"; };
+		663D52A41A58A3BD00222845 /* CardsCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardsCollectionViewController.h; sourceTree = "<group>"; };
+		663D52A51A58A3BD00222845 /* CardsCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardsCollectionViewController.m; sourceTree = "<group>"; };
 		663D52A81A58A3BD00222845 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		663D52AA1A58A3BD00222845 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		663D52AD1A58A3BD00222845 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -179,8 +179,8 @@
 		663D52C31A58A3DB00222845 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				663D52A41A58A3BD00222845 /* CardsViewController.h */,
-				663D52A51A58A3BD00222845 /* CardsViewController.m */,
+				663D52A41A58A3BD00222845 /* CardsCollectionViewController.h */,
+				663D52A51A58A3BD00222845 /* CardsCollectionViewController.m */,
 				DD5F9CF2BD8146F7D8ACC50B /* SetsTableViewController.m */,
 				DD5F9909F436264E00DF6AEA /* SetsTableViewController.h */,
 			);
@@ -385,7 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				663D52A61A58A3BD00222845 /* CardsViewController.m in Sources */,
+				663D52A61A58A3BD00222845 /* CardsCollectionViewController.m in Sources */,
 				663D52A31A58A3BD00222845 /* AppDelegate.m in Sources */,
 				663D52D21A58A76A00222845 /* Store.m in Sources */,
 				663D52DF1A59989700222845 /* UIImage+Tint.m in Sources */,

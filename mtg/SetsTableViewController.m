@@ -6,6 +6,7 @@
 #import "SetsTableViewController.h"
 #import "Store.h"
 #import "SetTableViewCell.h"
+#import "CardsCollectionViewController.h"
 
 
 @implementation SetsTableViewController {
@@ -34,7 +35,9 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
+    CardsCollectionViewController *vc = (CardsCollectionViewController *)[segue destinationViewController];
+    UITableViewCell *cell = (UITableViewCell *)sender;
+    vc.setName = [[Store sharedStore] sets][(uint)[self.tableView indexPathForCell:cell].row];
 }
 
 @end

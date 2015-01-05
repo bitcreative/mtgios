@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class CardsCollectionViewController;
+
 @interface CardCollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
-- (void)setupCellAtIndexPath:(NSIndexPath *)indexPath;
+- (void)setupCellAtIndexPath:(NSIndexPath *)indexPath forSet:(NSDictionary *)set;
 
 @end

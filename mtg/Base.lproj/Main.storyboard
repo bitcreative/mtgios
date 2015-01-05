@@ -26,14 +26,14 @@
         <!--Cards-->
         <scene sceneID="GxN-bZ-9Ik">
             <objects>
-                <collectionViewController id="QYp-c2-3bW" customClass="CardsViewController" sceneMemberID="viewController">
+                <collectionViewController id="QYp-c2-3bW" customClass="CardsCollectionViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="tkJ-g2-bZX">
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gbK-lx-PzN" customClass="CSStickyHeaderFlowLayout">
                             <size key="itemSize" width="221" height="221"/>
-                            <size key="headerReferenceSize" width="50" height="44"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
@@ -51,7 +51,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="0.14999999999999999" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="e5Z-dl-b7X" firstAttribute="leading" secondItem="pHw-9k-Ewa" secondAttribute="leading" id="KgX-EG-4hS"/>
                                     <constraint firstAttribute="bottom" secondItem="e5Z-dl-b7X" secondAttribute="bottom" id="ilr-li-A3e"/>
@@ -64,28 +64,6 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="header" id="Wrq-hx-HPD" customClass="CardCollectionHeaderView">
-                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrh-dM-w98">
-                                    <rect key="frame" x="8" y="12" width="584" height="20"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
-                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="bottomMargin" secondItem="wrh-dM-w98" secondAttribute="bottom" constant="4" id="UV2-tt-cOs"/>
-                                <constraint firstItem="wrh-dM-w98" firstAttribute="top" secondItem="Wrq-hx-HPD" secondAttribute="topMargin" constant="4" id="YgA-oh-s6M"/>
-                                <constraint firstAttribute="trailingMargin" secondItem="wrh-dM-w98" secondAttribute="trailing" id="YmW-Em-txR"/>
-                                <constraint firstItem="wrh-dM-w98" firstAttribute="leading" secondItem="Wrq-hx-HPD" secondAttribute="leadingMargin" id="dAn-8n-Udw"/>
-                            </constraints>
-                            <connections>
-                                <outlet property="label" destination="wrh-dM-w98" id="q7n-2N-NUM"/>
-                            </connections>
-                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="QYp-c2-3bW" id="9JX-Nh-orE"/>
                             <outlet property="delegate" destination="QYp-c2-3bW" id="eGA-Qh-5gm"/>
@@ -96,7 +74,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GXZ-kh-nAY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1281" y="1851"/>
+            <point key="canvasLocation" x="1780" y="1827"/>
         </scene>
         <!--Sets-->
         <scene sceneID="BZB-4h-F28">
@@ -178,6 +156,7 @@
                                     <outlet property="date" destination="TcL-ej-hRe" id="dcm-g8-H8W"/>
                                     <outlet property="label" destination="iNb-ZQ-bAI" id="Y6t-DH-cGX"/>
                                     <outlet property="setImage" destination="xmU-fe-g6E" id="lBj-R9-UOZ"/>
+                                    <segue destination="QYp-c2-3bW" kind="show" identifier="setsDetail" id="Gol-Fs-Luj"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -208,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OHI-fZ-ieR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2011" y="1851"/>
+            <point key="canvasLocation" x="2483" y="1827"/>
         </scene>
     </scenes>
     <resources>
