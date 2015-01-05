@@ -21,8 +21,8 @@
         [operation cancel];
     }
 
-    self.imageView.image = nil;
-    self.imageView.layer.opacity = 0;
+    self.setImage.image = nil;
+    self.setImage.layer.opacity = 0;
 }
 
 - (void)setupCell:(NSIndexPath *)indexPath {
@@ -46,10 +46,10 @@
                                self.setImage.image = resizedImage;
 
                                [UIView animateWithDuration:0.5 animations:^{
-                                   self.imageView.layer.opacity = 1.0;
+                                   self.setImage.layer.opacity = 1.0;
                                }];
                            } else {
-                               NSLog(@"%@", [error localizedDescription]);
+                               self.setImage.image = nil;
                            }
                        }];
 }

@@ -30,11 +30,19 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"AllSets" ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:path];
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-    cards = dict;
+    cards = _.dict(dict).filterValues(^(NSDictionary *set) {
+        NSString *type = set[@"type"];
+        return (BOOL)([type isEqualToString:@"expansion"] || [type isEqualToString:@"core"]);
+    }).unwrap;
 }
 
 - (NSArray *)sets {
-    return [cards allKeys];
+    return _.array([cards allValues]).sort(^(NSDictionary *a, NSDictionary *b) {
+        return [a[@"name"] localizedCompare:b[@"name"]];
+    }).map(^(NSDictionary *set) {
+        return set[@"code"];
+    }).unwrap;
+
 }
 
 - (NSDictionary *)setWithName:(NSString *)set {
