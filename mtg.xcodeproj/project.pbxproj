@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		14581EE80E01D5586428D350 /* libPods-mtg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 324A5DD15157CBF6F27121D4 /* libPods-mtg.a */; };
+		6615F75C1A5B843D00240545 /* CardDetailHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6615F75A1A5B843D00240545 /* CardDetailHeaderCell.m */; };
+		6615F75D1A5B843D00240545 /* CardDetailHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6615F75B1A5B843D00240545 /* CardDetailHeaderCell.xib */; };
 		663D52A01A58A3BD00222845 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D529F1A58A3BD00222845 /* main.m */; };
 		663D52A31A58A3BD00222845 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D52A21A58A3BD00222845 /* AppDelegate.m */; };
 		663D52A61A58A3BD00222845 /* CardsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D52A51A58A3BD00222845 /* CardsCollectionViewController.m */; };
@@ -25,6 +27,7 @@
 		DD5F95A8D4E0AD721EEC061A /* SetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9A48CA65135C82CD8E5A /* SetTableViewCell.m */; };
 		DD5F96E4860075175A3111BA /* CardCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F98BDB213ABD0BAB6B11D /* CardCollectionHeaderView.m */; };
 		DD5F978B49D49D34482A9215 /* CardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9E6F9F3A20DB7F5716AA /* CardCollectionViewCell.m */; };
+		DD5F9CE2957A3CCCFB8BC1C2 /* CardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F904A2660E9D4644DE13A /* CardDetailViewController.m */; };
 		DD5F9F8329649BA7B8067F51 /* SetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9CF2BD8146F7D8ACC50B /* SetsTableViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +44,9 @@
 /* Begin PBXFileReference section */
 		29B350E86850FED9E3579A84 /* Pods-mtg.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mtg.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mtg/Pods-mtg.debug.xcconfig"; sourceTree = "<group>"; };
 		324A5DD15157CBF6F27121D4 /* libPods-mtg.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mtg.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6615F7591A5B843D00240545 /* CardDetailHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDetailHeaderCell.h; sourceTree = "<group>"; };
+		6615F75A1A5B843D00240545 /* CardDetailHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDetailHeaderCell.m; sourceTree = "<group>"; };
+		6615F75B1A5B843D00240545 /* CardDetailHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardDetailHeaderCell.xib; sourceTree = "<group>"; };
 		663D529A1A58A3BD00222845 /* mtg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mtg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		663D529E1A58A3BD00222845 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		663D529F1A58A3BD00222845 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -65,11 +71,13 @@
 		663D52DC1A59989700222845 /* UIImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tint.h"; sourceTree = "<group>"; };
 		663D52DD1A59989700222845 /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tint.m"; sourceTree = "<group>"; };
 		DD5F903743D39AB895C4BD65 /* CardCollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCollectionHeaderView.h; sourceTree = "<group>"; };
+		DD5F904A2660E9D4644DE13A /* CardDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDetailViewController.m; sourceTree = "<group>"; };
 		DD5F96F09EE42B76EFA16CB3 /* SetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetTableViewCell.h; sourceTree = "<group>"; };
 		DD5F96FFF7D6F6B356CD720F /* CardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCollectionViewCell.h; sourceTree = "<group>"; };
 		DD5F98BDB213ABD0BAB6B11D /* CardCollectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardCollectionHeaderView.m; sourceTree = "<group>"; };
 		DD5F9909F436264E00DF6AEA /* SetsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetsTableViewController.h; sourceTree = "<group>"; };
 		DD5F9A48CA65135C82CD8E5A /* SetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetTableViewCell.m; sourceTree = "<group>"; };
+		DD5F9A8AF89C78D2B21E65F9 /* CardDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDetailViewController.h; sourceTree = "<group>"; };
 		DD5F9CF2BD8146F7D8ACC50B /* SetsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetsTableViewController.m; sourceTree = "<group>"; };
 		DD5F9E6F9F3A20DB7F5716AA /* CardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardCollectionViewCell.m; sourceTree = "<group>"; };
 		E384666727C0A7B84282CCE5 /* Pods-mtg.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mtg.release.xcconfig"; path = "Pods/Target Support Files/Pods-mtg/Pods-mtg.release.xcconfig"; sourceTree = "<group>"; };
@@ -183,6 +191,8 @@
 				663D52A51A58A3BD00222845 /* CardsCollectionViewController.m */,
 				DD5F9CF2BD8146F7D8ACC50B /* SetsTableViewController.m */,
 				DD5F9909F436264E00DF6AEA /* SetsTableViewController.h */,
+				DD5F9A8AF89C78D2B21E65F9 /* CardDetailViewController.h */,
+				DD5F904A2660E9D4644DE13A /* CardDetailViewController.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -200,7 +210,7 @@
 		663D52CB1A58A5F800222845 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				DD5F9E443874415784F0CF2B /* cards */,
+				DD5F9E443874415784F0CF2B /* card */,
 				DD5F98E39E5FB91D91805653 /* sets */,
 			);
 			name = views;
@@ -235,15 +245,26 @@
 			name = sets;
 			sourceTree = "<group>";
 		};
-		DD5F9E443874415784F0CF2B /* cards */ = {
+		DD5F9DCD31548ED7C9AC7A3C /* detail */ = {
 			isa = PBXGroup;
 			children = (
+				6615F7591A5B843D00240545 /* CardDetailHeaderCell.h */,
+				6615F75A1A5B843D00240545 /* CardDetailHeaderCell.m */,
+				6615F75B1A5B843D00240545 /* CardDetailHeaderCell.xib */,
+			);
+			name = detail;
+			sourceTree = "<group>";
+		};
+		DD5F9E443874415784F0CF2B /* card */ = {
+			isa = PBXGroup;
+			children = (
+				DD5F9DCD31548ED7C9AC7A3C /* detail */,
 				DD5F96FFF7D6F6B356CD720F /* CardCollectionViewCell.h */,
 				DD5F9E6F9F3A20DB7F5716AA /* CardCollectionViewCell.m */,
 				DD5F98BDB213ABD0BAB6B11D /* CardCollectionHeaderView.m */,
 				DD5F903743D39AB895C4BD65 /* CardCollectionHeaderView.h */,
 			);
-			name = cards;
+			name = card;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +356,7 @@
 				663D52C61A58A50900222845 /* picture_list.png in Resources */,
 				663D52C81A58A52E00222845 /* picture_list@2x.png in Resources */,
 				663D52AB1A58A3BD00222845 /* Images.xcassets in Resources */,
+				6615F75D1A5B843D00240545 /* CardDetailHeaderCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +417,8 @@
 				DD5F978B49D49D34482A9215 /* CardCollectionViewCell.m in Sources */,
 				DD5F96E4860075175A3111BA /* CardCollectionHeaderView.m in Sources */,
 				DD5F95A8D4E0AD721EEC061A /* SetTableViewCell.m in Sources */,
+				DD5F9CE2957A3CCCFB8BC1C2 /* CardDetailViewController.m in Sources */,
+				6615F75C1A5B843D00240545 /* CardDetailHeaderCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

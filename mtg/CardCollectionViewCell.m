@@ -34,10 +34,10 @@
     NSString *code = set[@"code"];
     NSDictionary *card = set[@"cards"][(uint) indexPath.row];
 
+    self.card = card;
+
     NSString *urlString = [NSString stringWithFormat:@"http://mtgimage.com/set/%@/%@.jpg", code, card[@"name"]];
     NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-
-//    BOOL cached = [manager cachedImageExistsForURL:url];
 
     operation = [manager
             downloadImageWithURL:url

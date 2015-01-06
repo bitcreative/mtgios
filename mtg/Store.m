@@ -54,6 +54,11 @@
     return [NSURL URLWithString:url];
 }
 
+- (NSURL *)imageURLForCard:(NSDictionary *)card inSet:(NSDictionary *)set {
+    NSString *url = [NSString stringWithFormat:@"http://mtgimage.com/set/%@/%@.jpg", set[@"code"], card[@"name"]];
+    return [NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+}
+
 - (NSArray *)cardsForSet:(NSString *)set {
     return cards[set][@"cards"];
 }

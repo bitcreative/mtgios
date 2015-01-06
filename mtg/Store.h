@@ -18,6 +18,7 @@
 - (NSDictionary *)setWithName:(NSString *)set;
 - (NSURL *)imageURLForSet:(NSString *)set;
 - (NSArray *)cardsForSet:(NSString *)set;
+- (NSURL *)imageURLForCard:(NSDictionary *)card inSet:(NSDictionary *)set;
 
 - (NSNumber *)totalCards;
 

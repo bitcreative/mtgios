@@ -13,6 +13,7 @@
 #import "CardCollectionViewCell.h"
 
 #import "Store.h"
+#import "CardDetailViewController.h"
 
 @interface CardsCollectionViewController () {
     Store *store;
@@ -64,8 +65,8 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat width = self.collectionView.contentSize.width;
-    CGFloat size = width / 3;
-    return CGSizeMake(size - 24, size + 50);
+    CGFloat size = width / 4;
+    return CGSizeMake(size, size + 50);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
@@ -82,5 +83,14 @@
 
 #pragma mark - UICollectionViewDelegate
 
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    CardDetailViewController *vc = (CardDetailViewController *)[segue destinationViewController];
+    CardCollectionViewCell *cell = (CardCollectionViewCell *)sender;
+    vc.set = set;
+    vc.card = cell.card;
+}
 
 @end
