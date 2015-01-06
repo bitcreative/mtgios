@@ -47,7 +47,10 @@
         CardDetailHeaderCell *cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind
                                                                             withReuseIdentifier:@"mainHeader"
                                                                                    forIndexPath:indexPath];
-        [cell setupForCard:self.card inSet:self.set];
+        if (!cell.loaded) {
+            [cell setupForCard:self.card inSet:self.set];
+            cell.loaded = YES;
+        }
         return cell;
     } else if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
         NSLog(@"other");

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,17 +14,58 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vtm-NS-7Rf">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCS-R2-F2b">
+                    <rect key="frame" x="8" y="4" width="304" height="27"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" white="0.0" alpha="0.25" colorSpace="calibratedWhite"/>
+                    <size key="shadowOffset" width="1" height="1"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYO-2O-Jt9">
+                    <rect key="frame" x="8" y="31" width="304" height="20"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <color key="shadowColor" white="0.0" alpha="0.25" colorSpace="calibratedWhite"/>
+                    <size key="shadowOffset" width="1" height="1"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jRk-Bq-VDA">
+                    <rect key="frame" x="8" y="53" width="304" height="27"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <constraints>
+                <constraint firstItem="wCS-R2-F2b" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="topMargin" constant="-4" id="7Rw-9a-vA6"/>
+                <constraint firstItem="dYO-2O-Jt9" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leadingMargin" id="ImV-o9-FRX"/>
+                <constraint firstAttribute="trailingMargin" secondItem="jRk-Bq-VDA" secondAttribute="trailing" id="MBq-5V-wEM"/>
+                <constraint firstItem="jRk-Bq-VDA" firstAttribute="top" secondItem="dYO-2O-Jt9" secondAttribute="bottom" constant="2" id="Qsx-Bm-Lj6"/>
+                <constraint firstItem="jRk-Bq-VDA" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leadingMargin" id="V0N-2i-p8k"/>
+                <constraint firstAttribute="bottom" secondItem="jRk-Bq-VDA" secondAttribute="bottom" id="Z7h-DF-m9o"/>
+                <constraint firstItem="dYO-2O-Jt9" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="8" id="bEH-XP-N8K"/>
                 <constraint firstItem="Vtm-NS-7Rf" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="dkb-9q-pVk"/>
+                <constraint firstItem="dYO-2O-Jt9" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="topMargin" constant="8" id="esL-VZ-Xnw"/>
+                <constraint firstAttribute="trailingMargin" secondItem="dYO-2O-Jt9" secondAttribute="trailing" id="hRh-oF-Tuw"/>
+                <constraint firstItem="dYO-2O-Jt9" firstAttribute="top" secondItem="wCS-R2-F2b" secondAttribute="bottom" id="jgw-9u-DC6"/>
                 <constraint firstAttribute="bottom" secondItem="Vtm-NS-7Rf" secondAttribute="bottom" id="k7S-z9-0d6"/>
+                <constraint firstAttribute="trailingMargin" secondItem="wCS-R2-F2b" secondAttribute="trailing" id="sVe-KQ-owu"/>
                 <constraint firstItem="Vtm-NS-7Rf" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="t9J-ur-Oh2"/>
                 <constraint firstAttribute="trailing" secondItem="Vtm-NS-7Rf" secondAttribute="trailing" id="uMY-bb-JHK"/>
+                <constraint firstItem="wCS-R2-F2b" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leadingMargin" id="ydZ-dc-8ad"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="bEH-XP-N8K"/>
+                    <exclude reference="esL-VZ-Xnw"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="cardImage" destination="Vtm-NS-7Rf" id="IvQ-zI-NfI"/>
+                <outlet property="manaContainer" destination="jRk-Bq-VDA" id="r1N-zC-WFy"/>
+                <outlet property="name" destination="wCS-R2-F2b" id="Ndt-b8-dSW"/>
+                <outlet property="type" destination="dYO-2O-Jt9" id="SPn-wV-Ih8"/>
             </connections>
-            <point key="canvasLocation" x="413" y="312"/>
+            <point key="canvasLocation" x="413" y="336"/>
         </collectionReusableView>
     </objects>
 </document>
