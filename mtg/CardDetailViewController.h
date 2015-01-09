@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CardDetailViewController : UICollectionViewController<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface CardDetailViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) NSDictionary *set;
 @property (weak, nonatomic) NSDictionary *card;

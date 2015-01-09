@@ -10,54 +10,79 @@
 
 #import "CardDetailViewController.h"
 #import "CardDetailHeaderCell.h"
+#import "CardDetailTextHeaderCell.h"
+#import "CardTextTableViewCell.h"
 
 @implementation CardDetailViewController
 
 - (void)viewDidLoad {
-    CSStickyHeaderFlowLayout *layout = (id)self.collectionViewLayout;
-    layout.parallaxHeaderReferenceSize = CGSizeMake(self.view.frame.size.width, 80);
+//    UINib *header = [UINib nibWithNibName:@"CardDetailHeaderCell" bundle:nil];
+//    [self.tableView registerNib:header forHeaderFooterViewReuseIdentifier:CardDetailHeader];
+//    UINib *textHeader = [UINib nibWithNibName:@"CardDetailTextHeaderCell" bundle:nil];
+//    [self.tableView registerNib:header forHeaderFooterViewReuseIdentifier:TextHeader];
+//    [self.collectionView registerNib:header
+//          forSupplementaryViewOfKind:CSStickyHeaderParallaxHeader
+//                 withReuseIdentifier:@"mainHeader"];
+//    UINib *textHeader = [UINib nibWithNibName:@"CardDetailTextHeaderCell" bundle:nil];
+//    [self.collectionView registerNib:textHeader
+//          forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+//                 withReuseIdentifier:@"textHeader"];
 
-    UINib *header = [UINib nibWithNibName:@"CardDetailHeaderCell" bundle:nil];
-    [self.collectionView registerNib:header
-          forSupplementaryViewOfKind:CSStickyHeaderParallaxHeader
-                 withReuseIdentifier:@"mainHeader"];
+//    [self.tableView registerClass:[CardDetailHeaderCell class] forCellReuseIdentifier:@"cardDetailHeader"];
 
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
-
-    [self.collectionView reloadData];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 }
 
-#pragma mark - UICollectionViewDataSource
+#pragma mark - UITableViewDataSource
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 1) {
+        CardTextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"textCell"
+                                                                                forIndexPath:indexPath];
+        cell.cardText.text = self.card[@"text"];
+        return cell;
+    }
+
+    return [[UITableViewCell alloc] init];
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 100;
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        CardDetailHeaderCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cardDetailHeader"];
+        [cell setupForCard:self.card inSet:self.set];
+        return cell;
+    }
+
+    NSString *text;
+
+    if (section == 1) {
+        text = @"Text";
+    } else if (section == 2) {
+        text = @"Prices";
+    }
+
+    CardDetailTextHeaderCell *cell = (CardDetailTextHeaderCell *)[self.tableView dequeueReusableCellWithIdentifier:@"cardDetailTextHeader"];
+    cell.headerLabel.text = text;
+    return cell;
 }
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return 120;
+    }
+    return 30;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section == 0) {
+        return 0;
+    }
     return 1;
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    if ([kind isEqualToString:CSStickyHeaderParallaxHeader]) {
-        CardDetailHeaderCell *cell = [collectionView dequeueReusableSupplementaryViewOfKind:kind
-                                                                            withReuseIdentifier:@"mainHeader"
-                                                                                   forIndexPath:indexPath];
-        if (!cell.loaded) {
-            [cell setupForCard:self.card inSet:self.set];
-            cell.loaded = YES;
-        }
-        return cell;
-    } else if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-        NSLog(@"other");
-    } else {
-        // other custom supplementary views
-    }
-    return nil;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
 }
 
 @end

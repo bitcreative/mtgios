@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CardDetailHeaderCell : UICollectionReusableView
+@interface CardDetailHeaderCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *cardImage;
-@property (weak, nonatomic) IBOutlet UILabel *name;
-@property (weak, nonatomic) IBOutlet UILabel *type;
-@property (weak, nonatomic) IBOutlet UIView *manaContainer;
+@property (strong, nonatomic) IBOutlet UIImageView *cardImage;
+@property (strong, nonatomic) IBOutlet UILabel *name;
+@property (strong, nonatomic) IBOutlet UILabel *type;
+@property (strong, nonatomic) IBOutlet UIView *manaContainer;
 
 @property BOOL loaded;
 

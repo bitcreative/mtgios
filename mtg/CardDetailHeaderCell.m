@@ -18,12 +18,17 @@
     NSInteger manaCount;
 };
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
+//- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
 
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
-    [self addGestureRecognizer:tap];
-    tap.cancelsTouchesInView = NO;
+    if (self) {
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+        [self addGestureRecognizer:tap];
+        tap.cancelsTouchesInView = NO;
+    }
+
+    return self;
 }
 
 - (void)tap {
@@ -41,7 +46,8 @@
 
     UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
-    [self insertSubview:effectView belowSubview:self.name];
+//    effectView.frame = (CGRect){ 0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height };
+//    [self insertSubview:effectView aboveSubview:self.imageView];
 
     [self setupMana:card];
 
@@ -50,7 +56,9 @@
                          progress:nil
                         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageUrl) {
                             if (image) {
-                                effectView.frame = CGRectMake(0, 0, self.frame.size.width, image.size.height);
+                                effectView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+                                [self.contentView insertSubview:effectView belowSubview:self.name];
+//                                [self.contentView addSubview:effectView];
                                 self.cardImage.image = image;
                             } else { NSLog(@"@Loading issue: %@", [error localizedDescription]); }
                         }];
