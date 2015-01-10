@@ -7,8 +7,10 @@
 //
 
 #import <Underscore.h>
+#import <TFHpple.h>
 
 #import "Store.h"
+#import "Promise.h"
 
 #define _ Underscore
 
@@ -59,6 +61,47 @@
     return [NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 
+- (PMKPromise *)pricesForCard:(NSDictionary *)card inSet:(NSDictionary *)set {
+    NSString *setCode = set[@"code"];
+    NSString *setName = set[@"name"];
+    setName = [[setName stringByReplacingOccurrencesOfString:@" " withString:@"-"] lowercaseString];
+    NSString *cardName = card[@"name"];
+    cardName = [[cardName stringByReplacingOccurrencesOfString:@" " withString:@"-"] lowercaseString];
+    NSString *urlString = [NSString stringWithFormat:@"http://shop.tcgplayer.com/magic/%@/%@", setName, cardName];
+    NSLog(@"%@", urlString);
+    return [PMKPromise new:^(PMKPromiseFulfiller fulfill, PMKPromiseRejecter reject) {
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        [manager GET:urlString parameters:nil
+             success:^(AFHTTPRequestOperation *operation, NSData *data) {
+                 TFHpple *parser = [TFHpple hppleWithHTMLData:data];
+                 NSString *high = @"//p[@class='high']|p[@class='median']|p[@class='low']";
+                 NSString *median = @"//p[@class='median']";
+                 NSString *low = @"//p[@class='low']";
+
+                 NSArray *highNodes = [parser searchWithXPathQuery:high];
+                 NSArray *medianNodes = [parser searchWithXPathQuery:median];
+                 NSArray *lowNodes = [parser searchWithXPathQuery:low];
+
+                 NSArray *array = _.array(lowNodes).zipWith(medianNodes, ^(TFHppleElement *one, TFHppleElement *two) {
+                     NSMutableArray *mutableArray = [@[] mutableCopy];
+                     [mutableArray addObjectsFromArray:@[one.text, two.text]];
+                     return mutableArray;
+                 }).zipWith(highNodes, ^(NSArray *currentArray, TFHppleElement *two) {
+                     NSMutableArray *mutableArray = [currentArray mutableCopy];
+                     [mutableArray addObject:two.text];
+                     NSLog(@"%@", mutableArray);
+                     return mutableArray;
+                 }).unwrap;
+
+                 fulfill(array);
+             }
+             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 reject(nil);
+             }];
+    }];
+}
+
 - (NSArray *)cardsForSet:(NSString *)set {
     return cards[set][@"cards"];
 }
@@ -69,6 +112,12 @@
     }).reduce(@0, ^(NSNumber *curr, NSArray *setCards) {
         return @(curr.integerValue + setCards.count);
     });
+}
+
+- (NSArray *)priceNodeValues:(NSArray *)nodes {
+    return _.array(nodes).map(^(TFHppleElement *elem) {
+        return elem.text;
+    }).unwrap;
 }
 
 @end

@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import <PromiseKit.h>
+#import <AFNetworking+PromiseKit.h>
+
 @interface Store : NSObject
 
 + (Store *)sharedStore;
@@ -19,6 +22,7 @@
 - (NSURL *)imageURLForSet:(NSString *)set;
 - (NSArray *)cardsForSet:(NSString *)set;
 - (NSURL *)imageURLForCard:(NSDictionary *)card inSet:(NSDictionary *)set;
+- (PMKPromise *)pricesForCard:(NSDictionary *)card inSet:(NSDictionary *)set;
 
 - (NSNumber *)totalCards;
 

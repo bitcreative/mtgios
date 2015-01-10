@@ -196,6 +196,18 @@
                                     <outlet property="cardText" destination="Eks-Li-1nS" id="3MF-CB-q1z"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="priceCell" id="hcq-3i-bB2" customClass="CardPriceTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hcq-3i-bB2" id="pdB-Dv-w1C">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CCK-AU-6IE" customClass="PriceView">
+                                            <rect key="frame" x="8" y="11" width="72" height="22"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="82F-AG-3Ls" id="uYS-Oa-TEu"/>

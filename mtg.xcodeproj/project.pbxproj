@@ -11,6 +11,9 @@
 		6615F75C1A5B843D00240545 /* CardDetailHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6615F75A1A5B843D00240545 /* CardDetailHeaderCell.m */; };
 		6615F7611A5CC54C00240545 /* CardDetailTextHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6615F75F1A5CC54C00240545 /* CardDetailTextHeaderCell.m */; };
 		6615F7651A5CD3A100240545 /* CardTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6615F7641A5CD3A100240545 /* CardTextTableViewCell.m */; };
+		6615F7681A5F69EF00240545 /* CardPriceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6615F7671A5F69EF00240545 /* CardPriceTableViewCell.m */; };
+		6615F76D1A5F6ACB00240545 /* PriceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6615F76C1A5F6ACB00240545 /* PriceView.m */; };
+		6615F76F1A5F6B0600240545 /* PriceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6615F76E1A5F6B0600240545 /* PriceView.xib */; };
 		663D52A01A58A3BD00222845 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D529F1A58A3BD00222845 /* main.m */; };
 		663D52A31A58A3BD00222845 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D52A21A58A3BD00222845 /* AppDelegate.m */; };
 		663D52A61A58A3BD00222845 /* CardsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D52A51A58A3BD00222845 /* CardsCollectionViewController.m */; };
@@ -51,6 +54,11 @@
 		6615F75F1A5CC54C00240545 /* CardDetailTextHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDetailTextHeaderCell.m; sourceTree = "<group>"; };
 		6615F7631A5CD3A100240545 /* CardTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardTextTableViewCell.h; sourceTree = "<group>"; };
 		6615F7641A5CD3A100240545 /* CardTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardTextTableViewCell.m; sourceTree = "<group>"; };
+		6615F7661A5F69EF00240545 /* CardPriceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardPriceTableViewCell.h; sourceTree = "<group>"; };
+		6615F7671A5F69EF00240545 /* CardPriceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardPriceTableViewCell.m; sourceTree = "<group>"; };
+		6615F76B1A5F6ACB00240545 /* PriceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PriceView.h; sourceTree = "<group>"; };
+		6615F76C1A5F6ACB00240545 /* PriceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PriceView.m; sourceTree = "<group>"; };
+		6615F76E1A5F6B0600240545 /* PriceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PriceView.xib; sourceTree = "<group>"; };
 		663D529A1A58A3BD00222845 /* mtg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mtg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		663D529E1A58A3BD00222845 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		663D529F1A58A3BD00222845 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -121,6 +129,21 @@
 				324A5DD15157CBF6F27121D4 /* libPods-mtg.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6615F7691A5F6AA000240545 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				6615F7591A5B843D00240545 /* CardDetailHeaderCell.h */,
+				6615F75A1A5B843D00240545 /* CardDetailHeaderCell.m */,
+				6615F75E1A5CC54C00240545 /* CardDetailTextHeaderCell.h */,
+				6615F75F1A5CC54C00240545 /* CardDetailTextHeaderCell.m */,
+				6615F7631A5CD3A100240545 /* CardTextTableViewCell.h */,
+				6615F7641A5CD3A100240545 /* CardTextTableViewCell.m */,
+				6615F7661A5F69EF00240545 /* CardPriceTableViewCell.h */,
+				6615F7671A5F69EF00240545 /* CardPriceTableViewCell.m */,
+			);
+			name = cells;
 			sourceTree = "<group>";
 		};
 		663D52911A58A3BD00222845 = {
@@ -252,12 +275,10 @@
 		DD5F9DCD31548ED7C9AC7A3C /* detail */ = {
 			isa = PBXGroup;
 			children = (
-				6615F7591A5B843D00240545 /* CardDetailHeaderCell.h */,
-				6615F75A1A5B843D00240545 /* CardDetailHeaderCell.m */,
-				6615F75E1A5CC54C00240545 /* CardDetailTextHeaderCell.h */,
-				6615F75F1A5CC54C00240545 /* CardDetailTextHeaderCell.m */,
-				6615F7631A5CD3A100240545 /* CardTextTableViewCell.h */,
-				6615F7641A5CD3A100240545 /* CardTextTableViewCell.m */,
+				6615F7691A5F6AA000240545 /* cells */,
+				6615F76B1A5F6ACB00240545 /* PriceView.h */,
+				6615F76C1A5F6ACB00240545 /* PriceView.m */,
+				6615F76E1A5F6B0600240545 /* PriceView.xib */,
 			);
 			name = detail;
 			sourceTree = "<group>";
@@ -360,6 +381,7 @@
 				663D52A91A58A3BD00222845 /* Main.storyboard in Resources */,
 				663D52AE1A58A3BD00222845 /* LaunchScreen.xib in Resources */,
 				663D52CA1A58A54200222845 /* picture_list@3x.png in Resources */,
+				6615F76F1A5F6B0600240545 /* PriceView.xib in Resources */,
 				663D52C61A58A50900222845 /* picture_list.png in Resources */,
 				663D52C81A58A52E00222845 /* picture_list@2x.png in Resources */,
 				663D52AB1A58A3BD00222845 /* Images.xcassets in Resources */,
@@ -417,11 +439,13 @@
 				663D52A61A58A3BD00222845 /* CardsCollectionViewController.m in Sources */,
 				663D52A31A58A3BD00222845 /* AppDelegate.m in Sources */,
 				663D52D21A58A76A00222845 /* Store.m in Sources */,
+				6615F76D1A5F6ACB00240545 /* PriceView.m in Sources */,
 				663D52DF1A59989700222845 /* UIImage+Tint.m in Sources */,
 				663D52A01A58A3BD00222845 /* main.m in Sources */,
 				663D52DE1A59989700222845 /* UIImage+ProportionalFill.m in Sources */,
 				DD5F9F8329649BA7B8067F51 /* SetsTableViewController.m in Sources */,
 				DD5F978B49D49D34482A9215 /* CardCollectionViewCell.m in Sources */,
+				6615F7681A5F69EF00240545 /* CardPriceTableViewCell.m in Sources */,
 				6615F7651A5CD3A100240545 /* CardTextTableViewCell.m in Sources */,
 				DD5F96E4860075175A3111BA /* CardCollectionHeaderView.m in Sources */,
 				DD5F95A8D4E0AD721EEC061A /* SetTableViewCell.m in Sources */,

@@ -46,8 +46,6 @@
 
     UIVisualEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:effect];
-//    effectView.frame = (CGRect){ 0, 0, self.contentView.frame.size.width, self.contentView.frame.size.height };
-//    [self insertSubview:effectView aboveSubview:self.imageView];
 
     [self setupMana:card];
 
@@ -58,7 +56,6 @@
                             if (image) {
                                 effectView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
                                 [self.contentView insertSubview:effectView belowSubview:self.name];
-//                                [self.contentView addSubview:effectView];
                                 self.cardImage.image = image;
                             } else { NSLog(@"@Loading issue: %@", [error localizedDescription]); }
                         }];

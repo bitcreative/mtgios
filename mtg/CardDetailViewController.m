@@ -12,24 +12,11 @@
 #import "CardDetailHeaderCell.h"
 #import "CardDetailTextHeaderCell.h"
 #import "CardTextTableViewCell.h"
+#import "CardPriceTableViewCell.h"
 
 @implementation CardDetailViewController
 
 - (void)viewDidLoad {
-//    UINib *header = [UINib nibWithNibName:@"CardDetailHeaderCell" bundle:nil];
-//    [self.tableView registerNib:header forHeaderFooterViewReuseIdentifier:CardDetailHeader];
-//    UINib *textHeader = [UINib nibWithNibName:@"CardDetailTextHeaderCell" bundle:nil];
-//    [self.tableView registerNib:header forHeaderFooterViewReuseIdentifier:TextHeader];
-//    [self.collectionView registerNib:header
-//          forSupplementaryViewOfKind:CSStickyHeaderParallaxHeader
-//                 withReuseIdentifier:@"mainHeader"];
-//    UINib *textHeader = [UINib nibWithNibName:@"CardDetailTextHeaderCell" bundle:nil];
-//    [self.collectionView registerNib:textHeader
-//          forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
-//                 withReuseIdentifier:@"textHeader"];
-
-//    [self.tableView registerClass:[CardDetailHeaderCell class] forCellReuseIdentifier:@"cardDetailHeader"];
-
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 }
@@ -42,6 +29,10 @@
                                                                                 forIndexPath:indexPath];
         cell.cardText.text = self.card[@"text"];
         return cell;
+    } else if (indexPath.section == 2) {
+        CardPriceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"priceCell"
+                                                                       forIndexPath:indexPath];
+        [cell setupForCard:self.card inSet:self.set];
     }
 
     return [[UITableViewCell alloc] init];
