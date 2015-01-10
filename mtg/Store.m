@@ -17,6 +17,8 @@
 @implementation Store {
 @private
     NSDictionary *cards;
+    NSMutableArray *favorites;
+    CKDatabase *privateDatabase;
 }
 
 + (Store *)sharedStore {
@@ -28,14 +30,75 @@
     return sharedStore;
 }
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        CKContainer *container = [CKContainer defaultContainer];
+        [container accountStatusWithCompletionHandler:^(CKAccountStatus status, NSError *error) {
+            if (error) {
+                NSLog(@"%@", [error localizedDescription]);
+            }
+
+            NSLog(@"status: %d", status);
+
+            self.status = status;
+
+            privateDatabase = [container privateCloudDatabase];
+
+            [self setupSubscribe];
+            [self loadFavorites];
+        }];
+    }
+    return self;
+}
+
 - (void)loadData {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"AllSets" ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:path];
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     cards = _.dict(dict).filterValues(^(NSDictionary *set) {
         NSString *type = set[@"type"];
         return (BOOL) ([type isEqualToString:@"expansion"] || [type isEqualToString:@"core"]);
     }).unwrap;
+}
+
+- (void)loadFavorites {
+    NSPredicate *predicate = [NSPredicate predicateWithValue:YES];
+    CKQuery *query = [[CKQuery alloc] initWithRecordType:FavoritesRecordType predicate:predicate];
+    [privateDatabase performQuery:query
+                     inZoneWithID:nil
+                completionHandler:^(NSArray *records, NSError *error) {
+                    if (error) {
+                        NSLog(@"%@", [error localizedDescription]);
+                    } else {
+                        NSLog(@"%@", records);
+                        favorites = _.array(records).map(^(CKRecord *record) {
+                            return [record.recordID recordName];
+                        }).unwrap.mutableCopy;
+                    }
+                }];
+}
+
+- (void)setupSubscribe {
+    CKSubscription *favoritesSubscription = [[CKSubscription alloc]
+            initWithRecordType:FavoritesRecordType
+                     predicate:[NSPredicate predicateWithValue:YES]
+                       options:CKSubscriptionOptionsFiresOnRecordCreation | CKSubscriptionOptionsFiresOnRecordDeletion];
+
+    [privateDatabase saveSubscription:favoritesSubscription
+                    completionHandler:^(CKSubscription *subscription, NSError *error) {
+                        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+                        if (subscription) {
+                            dict[@"subscription"] = subscription;
+                        }
+                        if (error) {
+                            dict[@"error"] = error;
+                        }
+                        [[NSNotificationCenter defaultCenter]
+                                postNotificationName:NotificationFavoritesUpdated
+                                              object:self
+                                            userInfo:dict];
+                    }];
 }
 
 - (NSArray *)sets {
@@ -63,12 +126,15 @@
 
 - (PMKPromise *)pricesForCard:(NSDictionary *)card inSet:(NSDictionary *)set {
     NSString *setCode = set[@"code"];
+
     NSString *setName = set[@"name"];
     setName = [[setName stringByReplacingOccurrencesOfString:@" " withString:@"-"] lowercaseString];
+
     NSString *cardName = card[@"name"];
     cardName = [[cardName stringByReplacingOccurrencesOfString:@" " withString:@"-"] lowercaseString];
+
     NSString *urlString = [NSString stringWithFormat:@"http://shop.tcgplayer.com/magic/%@/%@", setName, cardName];
-    NSLog(@"%@", urlString);
+
     return [PMKPromise new:^(PMKPromiseFulfiller fulfill, PMKPromiseRejecter reject) {
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -105,6 +171,58 @@
                  reject(nil);
              }];
     }];
+}
+
+- (PMKPromise *)addFavoriteCard:(NSDictionary *)card {
+    NSNumber *multiverseid = card[@"multiverseid"];
+    CKRecordID *recordId = [[CKRecordID alloc] initWithRecordName:multiverseid.stringValue];
+    CKRecord *record = [[CKRecord alloc] initWithRecordType:FavoritesRecordType recordID:recordId];
+    record[@"name"] = card[@"name"];
+    return [PMKPromise new:^(PMKPromiseFulfiller fulfill, PMKPromiseRejecter reject) {
+        [privateDatabase saveRecord:record completionHandler:^(CKRecord *savedRecord, NSError *error) {
+            if (error) {
+                NSLog(@"%@", [error localizedDescription]);
+                reject(error);
+            } else {
+                NSLog(@"Saved record");
+                [favorites addObject:multiverseid.stringValue];
+                fulfill(savedRecord);
+            }
+        }];
+    }];
+}
+
+- (PMKPromise *)removeFavoriteCard:(NSDictionary *)card {
+    NSNumber *multiverseid = card[@"multiverseid"];
+    CKRecordID *recordId = [[CKRecordID alloc] initWithRecordName:multiverseid.stringValue];
+    return [PMKPromise new:^(PMKPromiseFulfiller fulfill, PMKPromiseRejecter reject) {
+        [privateDatabase deleteRecordWithID:recordId
+                          completionHandler:^(CKRecordID *deletedRecordId, NSError *error) {
+                              if (error) {
+                                  NSLog(@"%@", [error localizedDescription]);
+                                  reject(error);
+                              } else {
+                                  NSLog(@"Removed favorite");
+                                  [favorites removeObject:multiverseid.stringValue];
+                                  fulfill(deletedRecordId);
+                              }
+                          }];
+    }];
+}
+
+- (BOOL)isCardFavorite:(NSDictionary *)card {
+    NSNumber *multiverseid = card[@"multiverseid"];
+    CKRecordID *recordId = [[CKRecordID alloc] initWithRecordName:multiverseid.stringValue];
+    [privateDatabase fetchRecordWithID:recordId completionHandler:^(CKRecord *record, NSError *error) {
+        if (error) {
+            NSLog(@"%@", [error localizedDescription]);
+        } else {
+            if (![favorites containsObject:multiverseid.stringValue]) {
+                [favorites addObject:multiverseid];
+            }
+        }
+    }];
+    return [favorites containsObject:multiverseid.stringValue];
 }
 
 - (NSArray *)cardsForSet:(NSString *)set {

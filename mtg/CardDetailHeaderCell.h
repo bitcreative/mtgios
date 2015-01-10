@@ -15,6 +15,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *type;
 @property (strong, nonatomic) IBOutlet UIView *manaContainer;
 
+@property (strong, nonatomic) NSDictionary *card;
+
 @property BOOL loaded;
 
 - (void)setupForCard:(NSDictionary *)card inSet:(NSDictionary *)set;

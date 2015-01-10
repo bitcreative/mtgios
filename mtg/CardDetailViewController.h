@@ -10,10 +10,12 @@
 
 @class CardDetailHeaderCell;
 
-@interface CardDetailViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface CardDetailViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) NSDictionary *set;
 @property (weak, nonatomic) NSDictionary *card;
 @property (strong, nonatomic) CardDetailHeaderCell *headerCell;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *favoriteButton;
 
 @end

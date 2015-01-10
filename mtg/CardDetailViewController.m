@@ -13,12 +13,53 @@
 #import "CardDetailTextHeaderCell.h"
 #import "CardTextTableViewCell.h"
 #import "CardPriceTableViewCell.h"
+#import "Store.h"
 
 @implementation CardDetailViewController
 
 - (void)viewDidLoad {
+    Store *store = [Store sharedStore];
+
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+
+    self.favoriteButton.target = self;
+    self.favoriteButton.action = @selector(toggleFavorite);
+
+    if([store isCardFavorite:self.card]) {
+        self.favoriteButton.image = [UIImage imageNamed:@"favorites.png"];
+    }
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(favoritesUpdate:)
+                                                 name:NotificationFavoritesUpdated
+                                               object:[Store sharedStore]];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+    [super viewWillDisappear:animated];
+}
+
+- (void)favoritesUpdate:(NSNotification *)notification {
+    NSLog(@"favorite called");
+    NSLog(@"%@", [notification userInfo]);
+}
+
+- (void)toggleFavorite {
+    Store *store = [Store sharedStore];
+    if(![store isCardFavorite:self.card]) {
+        self.favoriteButton.image = [UIImage imageNamed:@"favorites.png"];
+        [store addFavoriteCard:self.card].catch(^(NSError *error) {
+            self.favoriteButton.image = [UIImage imageNamed:@"favorites_empty.png"];
+        });
+    } else {
+        self.favoriteButton.image = [UIImage imageNamed:@"favorites_empty.png"];
+        [store removeFavoriteCard:self.card].catch(^(NSError *error) {
+            self.favoriteButton.image = [UIImage imageNamed:@"favorites.png"];
+        });
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -92,7 +133,5 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 4;
 }
-
-#pragma mark - UIScrollViewDelegate
 
 @end

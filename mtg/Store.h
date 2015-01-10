@@ -7,11 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CloudKit/CloudKit.h>
 
 #import <PromiseKit.h>
 #import <AFNetworking+PromiseKit.h>
 
+static NSString *const FavoritesRecordType = @"Favorites";
+
+static NSString *const NotificationFavoritesUpdated = @"FavoritesUpdated";
+
 @interface Store : NSObject
+
+@property (nonatomic) CKAccountStatus status;
 
 + (Store *)sharedStore;
 
@@ -20,9 +27,14 @@
 - (NSArray *)sets;
 - (NSDictionary *)setWithName:(NSString *)set;
 - (NSURL *)imageURLForSet:(NSString *)set;
-- (NSArray *)cardsForSet:(NSString *)set;
 - (NSURL *)imageURLForCard:(NSDictionary *)card inSet:(NSDictionary *)set;
+
 - (PMKPromise *)pricesForCard:(NSDictionary *)card inSet:(NSDictionary *)set;
+- (PMKPromise *)addFavoriteCard:(NSDictionary *)card;
+- (PMKPromise *)removeFavoriteCard:(NSDictionary *)card;
+- (BOOL)isCardFavorite:(NSDictionary *)card;
+
+- (NSArray *)cardsForSet:(NSString *)set;
 
 - (NSNumber *)totalCards;
 

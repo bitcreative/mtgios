@@ -18,7 +18,6 @@
     NSInteger manaCount;
 };
 
-//- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
 
@@ -32,12 +31,14 @@
 }
 
 - (void)tap {
-    NSLog(@"tapppppped");
+
 }
 
 #pragma mark - Setup
 
 - (void)setupForCard:(NSDictionary *)card inSet:(NSDictionary *)set {
+    self.card = card;
+
     self.name.text = card[@"name"];
     self.type.text = card[@"type"];
 

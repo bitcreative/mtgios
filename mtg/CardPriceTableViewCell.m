@@ -20,7 +20,6 @@
     ];
 
     [[Store sharedStore] pricesForCard:card inSet:set].then(^(NSArray *prices) {
-        NSLog(@"prices: %@", prices);
         NSArray *normal = prices.firstObject;
         NSArray *foil = prices.lastObject;
 

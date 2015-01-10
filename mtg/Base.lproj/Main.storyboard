@@ -76,7 +76,7 @@
             </objects>
             <point key="canvasLocation" x="1780" y="1827"/>
         </scene>
-        <!--Card Detail View Controller-->
+        <!-- -->
         <scene sceneID="TR5-3k-ITP">
             <objects>
                 <tableViewController id="82F-AG-3Ls" customClass="CardDetailViewController" sceneMemberID="viewController">
@@ -208,6 +208,12 @@
                             <outlet property="delegate" destination="82F-AG-3Ls" id="jrD-YH-gCC"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title=" " id="aJh-8r-3N3">
+                        <barButtonItem key="rightBarButtonItem" image="favorites_empty.png" id="Fx4-RB-YwA"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="favoriteButton" destination="Fx4-RB-YwA" id="B0P-hu-lo2"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MUc-vm-b8m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -310,6 +316,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="favorites_empty.png" width="22" height="22"/>
         <image name="picture_list.png" width="32" height="32"/>
     </resources>
 </document>
