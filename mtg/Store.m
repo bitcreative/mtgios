@@ -15,7 +15,7 @@
 #define _ Underscore
 
 @implementation Store {
-    @private
+@private
     NSDictionary *cards;
 }
 
@@ -34,7 +34,7 @@
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     cards = _.dict(dict).filterValues(^(NSDictionary *set) {
         NSString *type = set[@"type"];
-        return (BOOL)([type isEqualToString:@"expansion"] || [type isEqualToString:@"core"]);
+        return (BOOL) ([type isEqualToString:@"expansion"] || [type isEqualToString:@"core"]);
     }).unwrap;
 }
 
@@ -74,25 +74,30 @@
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         [manager GET:urlString parameters:nil
              success:^(AFHTTPRequestOperation *operation, NSData *data) {
-                 TFHpple *parser = [TFHpple hppleWithHTMLData:data];
-                 NSString *high = @"//p[@class='high']|p[@class='median']|p[@class='low']";
-                 NSString *median = @"//p[@class='median']";
-                 NSString *low = @"//p[@class='low']";
+//                 TFHpple *parser = [TFHpple hppleWithHTMLData:data];
+//                 NSString *high = @"//p[@class='high']|p[@class='median']|p[@class='low']";
+//                 NSString *median = @"//p[@class='median']";
+//                 NSString *low = @"//p[@class='low']";
+//
+//                 NSArray *highNodes = [parser searchWithXPathQuery:high];
+//                 NSArray *medianNodes = [parser searchWithXPathQuery:median];
+//                 NSArray *lowNodes = [parser searchWithXPathQuery:low];
+//
+//                 NSArray *array = _.array(lowNodes).zipWith(medianNodes, ^(TFHppleElement *one, TFHppleElement *two) {
+//                     NSMutableArray *mutableArray = [@[] mutableCopy];
+//                     [mutableArray addObjectsFromArray:@[one.text, two.text]];
+//                     return mutableArray;
+//                 }).zipWith(highNodes, ^(NSArray *currentArray, TFHppleElement *two) {
+//                     NSMutableArray *mutableArray = [currentArray mutableCopy];
+//                     [mutableArray addObject:two.text];
+//                     NSLog(@"%@", mutableArray);
+//                     return mutableArray;
+//                 }).unwrap;
 
-                 NSArray *highNodes = [parser searchWithXPathQuery:high];
-                 NSArray *medianNodes = [parser searchWithXPathQuery:median];
-                 NSArray *lowNodes = [parser searchWithXPathQuery:low];
-
-                 NSArray *array = _.array(lowNodes).zipWith(medianNodes, ^(TFHppleElement *one, TFHppleElement *two) {
-                     NSMutableArray *mutableArray = [@[] mutableCopy];
-                     [mutableArray addObjectsFromArray:@[one.text, two.text]];
-                     return mutableArray;
-                 }).zipWith(highNodes, ^(NSArray *currentArray, TFHppleElement *two) {
-                     NSMutableArray *mutableArray = [currentArray mutableCopy];
-                     [mutableArray addObject:two.text];
-                     NSLog(@"%@", mutableArray);
-                     return mutableArray;
-                 }).unwrap;
+                 NSArray *array = @[
+                         @[@"Low: $0.00", @"Median: $1.00", @"High: $3.00"],
+                         @[@"Low: $2.00", @"Median: $3.00", @"High: $6.00"]
+                 ];
 
                  fulfill(array);
              }
