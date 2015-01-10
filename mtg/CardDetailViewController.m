@@ -23,17 +23,24 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 
-    self.favoriteButton.target = self;
-    self.favoriteButton.action = @selector(toggleFavorite);
 
-    if([store isCardFavorite:self.card]) {
-        self.favoriteButton.image = [UIImage imageNamed:@"favorites.png"];
+    if (store.status == CKAccountStatusAvailable) {
+        self.favoriteButton.target = self;
+        self.favoriteButton.action = @selector(toggleFavorite);
+
+        if([store isCardFavorite:self.card]) {
+            self.favoriteButton.image = [UIImage imageNamed:@"favorites.png"];
+        }
+
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(favoritesUpdate:)
+                                                     name:NotificationFavoritesUpdated
+                                                   object:[Store sharedStore]];
+    } else {
+        NSMutableArray *items = self.navigationItem.rightBarButtonItems.mutableCopy;
+        [items removeObject:self.favoriteButton];
+        [self.navigationItem setRightBarButtonItems:items animated:NO];
     }
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(favoritesUpdate:)
-                                                 name:NotificationFavoritesUpdated
-                                               object:[Store sharedStore]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
