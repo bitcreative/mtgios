@@ -38,7 +38,8 @@
             price.layer.cornerRadius = 4;
             price.layer.masksToBounds = YES;
 
-            price.frame = CGRectMake((priceWidth * count) + (spacing * count) + (spacing / 2), centerOffset / 2,
+//            (screensize - 3 * width) / 4
+            price.frame = CGRectMake((priceWidth + spacing) * count + (spacing / 2), centerOffset / 2,
                     priceWidth, priceHeight);
 
             count += 1;

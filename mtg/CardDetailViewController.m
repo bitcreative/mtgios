@@ -24,12 +24,22 @@
 #pragma mark - UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 1) {
+    if (indexPath.section == 1 || indexPath.section == 2) {
         CardTextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"textCell"
                                                                                 forIndexPath:indexPath];
-        cell.cardText.text = self.card[@"text"];
+        NSString *text;
+        if (indexPath.section == 1) {
+            text = self.card[@"text"];
+        } else if (indexPath.section == 2) {
+            text = self.card[@"flavor"];
+            if (!text) {
+                text = @"No flavor text";
+            }
+        }
+
+        cell.cardText.text = text;
         return cell;
-    } else if (indexPath.section == 2) {
+    } else if (indexPath.section == 3) {
         CardPriceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"priceCell"
                                                                        forIndexPath:indexPath];
         [cell setupForCard:self.card inSet:self.set];
@@ -42,6 +52,11 @@
     if (section == 0) {
         CardDetailHeaderCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cardDetailHeader"];
         [cell setupForCard:self.card inSet:self.set];
+
+        if (!self.headerCell) {
+            self.headerCell = cell;
+        }
+
         return cell;
     }
 
@@ -50,6 +65,8 @@
     if (section == 1) {
         text = @"Text";
     } else if (section == 2) {
+        text = @"Flavor";
+    } else if (section == 3) {
         text = @"Prices";
     }
 
@@ -73,7 +90,9 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
+
+#pragma mark - UIScrollViewDelegate
 
 @end

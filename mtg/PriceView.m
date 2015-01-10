@@ -10,12 +10,4 @@
 
 @implementation PriceView
 
-//- (instancetype)init {
-//    self = [super init];
-//    if (self) {
-//        self.frame = (CGRect)
-//    }
-//    return self;
-//}
-
 @end
