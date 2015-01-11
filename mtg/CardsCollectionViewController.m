@@ -18,6 +18,7 @@
 @interface CardsCollectionViewController () {
     Store *store;
     NSDictionary *set;
+    BOOL isFavorites;
 }
 
 @end
@@ -26,14 +27,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     store = [Store sharedStore];
-    set = [store setWithName:self.setName];
+
+    if (self.setName) {
+        set = [store setWithName:self.setName];
+        self.title = set[@"name"];
+    } else {
+        if ([self.navigationItem.title isEqualToString:@"Favorites"]) {
+            isFavorites = YES;
+            [self.collectionView reloadData];
+        }
+    }
 
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-
-    self.title = set[@"name"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,11 +53,25 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CardCollectionViewCell *cell = (CardCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"card"
                                                                                                        forIndexPath:indexPath];
-    [cell setupCellAtIndexPath:indexPath forSet:set];
+    if (isFavorites) {
+        NSString *cardId = [store favorites][(uint)indexPath.row];
+        if (!set) {
+            NSDictionary *cardSet = [store setForCardMultiverseId:cardId];
+            NSDictionary *card = [store cardWithMultiverseId:cardId];
+            [cell setupCellAtIndexPath:indexPath forSet:cardSet card:card];
+        }
+    } else {
+        NSDictionary *card = set[@"cards"][(uint)indexPath.row];
+        [cell setupCellAtIndexPath:indexPath forSet:set card:card];
+    }
     return cell;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    if (isFavorites) {
+        return [store favorites].count;
+    }
+
     return [store cardsForSet:self.setName].count;
 }
 
@@ -60,21 +82,23 @@
 #pragma mark - UICollectionFlowLayoutDelegate
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat width = self.collectionView.contentSize.width;
-    CGFloat size = width / 4;
-    return CGSizeMake(size, size + 50);
+    CGSize imageSize = { 480, 680 };
+    CGFloat width = self.view.frame.size.width;
+    CGFloat size = width / 2;
+    CGFloat ratio = imageSize.width / imageSize.height;
+    return CGSizeMake(size - 12, size / ratio);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-    return 0;
+    return 4;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 8;
+    return 0;
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(8, 8, 0, 8);
+    return UIEdgeInsetsMake(2, 8, 0, 8);
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -85,8 +109,13 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     CardDetailViewController *vc = (CardDetailViewController *)[segue destinationViewController];
     CardCollectionViewCell *cell = (CardCollectionViewCell *)sender;
-    vc.set = set;
     vc.card = cell.card;
+
+    if (isFavorites) {
+        vc.set = [store setForCard:cell.card];
+    } else {
+        vc.set = set;
+    }
 }
 
 @end

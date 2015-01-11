@@ -33,8 +33,12 @@ static NSString *const NotificationFavoritesUpdated = @"FavoritesUpdated";
 - (PMKPromise *)addFavoriteCard:(NSDictionary *)card;
 - (PMKPromise *)removeFavoriteCard:(NSDictionary *)card;
 - (BOOL)isCardFavorite:(NSDictionary *)card;
+- (NSArray *)favorites;
 
+- (NSDictionary *)cardWithMultiverseId:(NSString *)id;
 - (NSArray *)cardsForSet:(NSString *)set;
+- (NSDictionary *)setForCard:(NSDictionary *)card;
+- (NSDictionary *)setForCardMultiverseId:(NSString *)id;
 
 - (NSNumber *)totalCards;
 

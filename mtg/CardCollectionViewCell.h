@@ -15,6 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) NSDictionary *card;
 
-- (void)setupCellAtIndexPath:(NSIndexPath *)indexPath forSet:(NSDictionary *)set;
+- (void)setupCellAtIndexPath:(NSIndexPath *)indexPath forSet:(NSDictionary *)set card:(NSDictionary *)card;
 
 @end

@@ -26,18 +26,14 @@
     self.imageView.image = nil;
 }
 
-- (void)setupCellAtIndexPath:(NSIndexPath *)indexPath forSet:(NSDictionary *)set {
+- (void)setupCellAtIndexPath:(NSIndexPath *)indexPath forSet:(NSDictionary *)set card:(NSDictionary *)card {
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
 
     __block BOOL setOpacity = NO;
 
-    NSString *code = set[@"code"];
-    NSDictionary *card = set[@"cards"][(uint) indexPath.row];
-
     self.card = card;
 
-    NSString *urlString = [NSString stringWithFormat:@"http://mtgimage.com/set/%@/%@.jpg", code, card[@"name"]];
-    NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURL *url = [[Store sharedStore] imageURLForCard:card inSet:set];
 
     operation = [manager
             downloadImageWithURL:url
@@ -54,7 +50,8 @@
                                CGSize size = {image.size.width * scale, image.size.height * scale};
                                UIImage *resizedImage = [image imageToFitSize:size method:MGImageResizeScale];
                                self.imageView.image = resizedImage;
-
+                               self.imageView.layer.masksToBounds = YES;
+                               self.imageView.layer.cornerRadius = 2;
 
                                [UIView animateWithDuration:0.8 animations:^{
                                    self.imageView.layer.opacity = 1.0;

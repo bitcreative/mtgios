@@ -17,8 +17,10 @@
 @implementation Store {
 @private
     NSDictionary *cards;
-    NSMutableArray *favorites;
+    NSDictionary *cardSetMap;
+    NSDictionary *idCardMap;
     CKDatabase *privateDatabase;
+    NSMutableArray *localFavorites;
 }
 
 + (Store *)sharedStore {
@@ -39,14 +41,14 @@
                 NSLog(@"%@", [error localizedDescription]);
             }
 
-            NSLog(@"status: %d", status);
-
             self.status = status;
 
-            privateDatabase = [container privateCloudDatabase];
+            if (status == CKAccountStatusAvailable) {
+                privateDatabase = [container privateCloudDatabase];
 
-            [self setupSubscribe];
-            [self loadFavorites];
+                [self setupSubscribe];
+                [self loadFavorites];
+            }
         }];
     }
     return self;
@@ -60,6 +62,21 @@
         NSString *type = set[@"type"];
         return (BOOL) ([type isEqualToString:@"expansion"] || [type isEqualToString:@"core"]);
     }).unwrap;
+
+    NSMutableDictionary *setMap = [NSMutableDictionary dictionary];
+    NSMutableDictionary *idMap = [NSMutableDictionary dictionary];
+    _.dict(dict).each(^(NSString *key, NSDictionary *value) {
+        _.array(value[@"cards"]).each(^(NSDictionary *card) {
+            NSString *cardId = [card[@"multiverseid"] stringValue];
+            if (cardId) {
+                setMap[cardId] = key;
+                idMap[cardId] = card;
+            }
+        });
+    });
+
+    cardSetMap = setMap;
+    idCardMap = idMap;
 }
 
 - (void)loadFavorites {
@@ -71,8 +88,7 @@
                     if (error) {
                         NSLog(@"%@", [error localizedDescription]);
                     } else {
-                        NSLog(@"%@", records);
-                        favorites = _.array(records).map(^(CKRecord *record) {
+                        localFavorites = _.array(records).map(^(CKRecord *record) {
                             return [record.recordID recordName];
                         }).unwrap.mutableCopy;
                     }
@@ -185,7 +201,7 @@
                 reject(error);
             } else {
                 NSLog(@"Saved record");
-                [favorites addObject:multiverseid.stringValue];
+                [localFavorites addObject:multiverseid.stringValue];
                 fulfill(savedRecord);
             }
         }];
@@ -203,7 +219,7 @@
                                   reject(error);
                               } else {
                                   NSLog(@"Removed favorite");
-                                  [favorites removeObject:multiverseid.stringValue];
+                                  [localFavorites removeObject:multiverseid.stringValue];
                                   fulfill(deletedRecordId);
                               }
                           }];
@@ -217,16 +233,34 @@
         if (error) {
             NSLog(@"%@", [error localizedDescription]);
         } else {
-            if (![favorites containsObject:multiverseid.stringValue]) {
-                [favorites addObject:multiverseid];
+            if (![localFavorites containsObject:multiverseid.stringValue]) {
+                [localFavorites addObject:multiverseid];
             }
         }
     }];
-    return [favorites containsObject:multiverseid.stringValue];
+    return [localFavorites containsObject:multiverseid.stringValue];
+}
+
+- (NSArray *)favorites {
+    return localFavorites;
+}
+
+- (NSDictionary *)cardWithMultiverseId:(NSString *)id {
+    return idCardMap[id];
 }
 
 - (NSArray *)cardsForSet:(NSString *)set {
     return cards[set][@"cards"];
+}
+
+- (NSDictionary *)setForCard:(NSDictionary *)card {
+    NSNumber *cardId = card[@"multiverseid"];
+    return [self setForCardMultiverseId:cardId.stringValue];
+}
+
+- (NSDictionary *)setForCardMultiverseId:(NSString *)cardId {
+    NSString *code = cardSetMap[cardId];
+    return cards[code];
 }
 
 - (NSNumber *)totalCards {
