@@ -103,17 +103,7 @@
 
     [privateDatabase saveSubscription:favoritesSubscription
                     completionHandler:^(CKSubscription *subscription, NSError *error) {
-                        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-                        if (subscription) {
-                            dict[@"subscription"] = subscription;
-                        }
-                        if (error) {
-                            dict[@"error"] = error;
-                        }
-                        [[NSNotificationCenter defaultCenter]
-                                postNotificationName:NotificationFavoritesUpdated
-                                              object:self
-                                            userInfo:dict];
+                        NSLog(@"Registered subscription");
                     }];
 }
 
@@ -202,6 +192,17 @@
             } else {
                 NSLog(@"Saved record");
                 [localFavorites addObject:multiverseid.stringValue];
+
+                NSDictionary *userInfo = @{
+                        @"card": card,
+                        @"operation": @(FavoritesAdded),
+                        @"index": @(localFavorites.count - 1)
+                };
+                [[NSNotificationCenter defaultCenter]
+                        postNotificationName:NotificationFavoritesUpdated
+                                      object:self
+                                    userInfo:userInfo];
+
                 fulfill(savedRecord);
             }
         }];
@@ -210,6 +211,7 @@
 
 - (PMKPromise *)removeFavoriteCard:(NSDictionary *)card {
     NSNumber *multiverseid = card[@"multiverseid"];
+    NSUInteger currentIndex = [localFavorites indexOfObject:multiverseid.stringValue];
     CKRecordID *recordId = [[CKRecordID alloc] initWithRecordName:multiverseid.stringValue];
     return [PMKPromise new:^(PMKPromiseFulfiller fulfill, PMKPromiseRejecter reject) {
         [privateDatabase deleteRecordWithID:recordId
@@ -220,6 +222,17 @@
                               } else {
                                   NSLog(@"Removed favorite");
                                   [localFavorites removeObject:multiverseid.stringValue];
+
+                                  NSDictionary *userInfo = @{
+                                          @"card": card,
+                                          @"operation": @(FavoritesRemoved),
+                                          @"index": @(currentIndex)
+                                  };
+                                  [[NSNotificationCenter defaultCenter]
+                                          postNotificationName:NotificationFavoritesUpdated
+                                                        object:self
+                                                      userInfo:userInfo];
+
                                   fulfill(deletedRecordId);
                               }
                           }];

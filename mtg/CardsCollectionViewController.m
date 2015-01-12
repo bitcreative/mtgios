@@ -19,6 +19,8 @@
     Store *store;
     NSDictionary *set;
     BOOL isFavorites;
+    NSMutableArray *cardsToRemove;
+    NSMutableArray *cardsToAdd;
 }
 
 @end
@@ -36,7 +38,14 @@
     } else {
         if ([self.navigationItem.title isEqualToString:@"Favorites"]) {
             isFavorites = YES;
-            [self.collectionView reloadData];
+
+            cardsToRemove = [@[] mutableCopy];
+            cardsToAdd = [@[] mutableCopy];
+
+            [[NSNotificationCenter defaultCenter] addObserver:self
+                                                     selector:@selector(favoritesUpdate:)
+                                                         name:NotificationFavoritesUpdated
+                                                       object:nil];
         }
     }
 
@@ -44,8 +53,42 @@
     self.collectionView.dataSource = self;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    if (isFavorites) {
+        [self.collectionView deleteItemsAtIndexPaths:cardsToRemove];
+        [self.collectionView insertItemsAtIndexPaths:cardsToAdd];
+
+        [cardsToRemove removeAllObjects];
+        [cardsToAdd removeAllObjects];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)favoritesUpdate:(NSNotification *)notification {
+    if (self.isViewLoaded) {
+        NSDictionary *data = [notification userInfo];
+        NSNumber *index = data[@"index"];
+        if ([data[@"operation"] integerValue] == FavoritesRemoved) {
+            if (index) {
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index.integerValue inSection:0];
+                [cardsToRemove addObject:indexPath];
+            }
+        } else if ([data[@"operation"] integerValue] == FavoritesAdded) {
+            if (index) {
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index.integerValue inSection:0];
+                [cardsToAdd addObject:indexPath];
+            }
+        }
+    }
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -54,6 +97,10 @@
     CardCollectionViewCell *cell = (CardCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"card"
                                                                                                        forIndexPath:indexPath];
     if (isFavorites) {
+        if ([store favorites].count - 1 < indexPath.row) {
+            return cell;
+        }
+
         NSString *cardId = [store favorites][(uint)indexPath.row];
         if (!set) {
             NSDictionary *cardSet = [store setForCardMultiverseId:cardId];

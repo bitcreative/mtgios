@@ -50,8 +50,7 @@
 }
 
 - (void)favoritesUpdate:(NSNotification *)notification {
-    NSLog(@"favorite called");
-    NSLog(@"%@", [notification userInfo]);
+
 }
 
 - (void)toggleFavorite {

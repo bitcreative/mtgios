@@ -13,8 +13,12 @@
 #import <AFNetworking+PromiseKit.h>
 
 static NSString *const FavoritesRecordType = @"Favorites";
-
 static NSString *const NotificationFavoritesUpdated = @"FavoritesUpdated";
+
+typedef NS_ENUM (NSInteger, FavoritesOperation) {
+    FavoritesAdded,
+    FavoritesRemoved
+};
 
 @interface Store : NSObject
 

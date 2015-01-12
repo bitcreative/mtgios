@@ -72,15 +72,17 @@
     NSRegularExpression *colorRegex = [NSRegularExpression regularExpressionWithPattern:@"\\{([^\\d])\\}"
                                                                                options:0
                                                                                  error:nil];
-    NSArray *colorlessMatches = [colorlessRegex matchesInString:manaCost options:0 range:range];
-    NSArray *colorMatches = [colorRegex matchesInString:manaCost options:0 range:range];
+    if (manaCost) {
+        NSArray *colorlessMatches = [colorlessRegex matchesInString:manaCost options:0 range:range];
+        NSArray *colorMatches = [colorRegex matchesInString:manaCost options:0 range:range];
 
-    if (colorlessMatches) {
-        [self downloadManaImages:colorlessMatches forCard:card];
-    }
+        if (colorlessMatches) {
+            [self downloadManaImages:colorlessMatches forCard:card];
+        }
 
-    if (colorMatches) {
-        [self downloadManaImages:colorMatches forCard:card];
+        if (colorMatches) {
+            [self downloadManaImages:colorMatches forCard:card];
+        }
     }
 }
 
