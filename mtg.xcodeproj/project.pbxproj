@@ -38,8 +38,11 @@
 		DD5F95A8D4E0AD721EEC061A /* SetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9A48CA65135C82CD8E5A /* SetTableViewCell.m */; };
 		DD5F96E4860075175A3111BA /* CardCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F98BDB213ABD0BAB6B11D /* CardCollectionHeaderView.m */; };
 		DD5F978B49D49D34482A9215 /* CardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9E6F9F3A20DB7F5716AA /* CardCollectionViewCell.m */; };
+		DD5F983F48CEEC4DA1D3EFDF /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9AD58AF71AB9C4BD8296 /* search.png */; };
+		DD5F9C199612A369DBF0D199 /* search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9F085E4A55C1FFB4D31E /* search@3x.png */; };
 		DD5F9CE2957A3CCCFB8BC1C2 /* CardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F904A2660E9D4644DE13A /* CardDetailViewController.m */; };
 		DD5F9F8329649BA7B8067F51 /* SetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9CF2BD8146F7D8ACC50B /* SetsTableViewController.m */; };
+		DD5F9FFC9AF9E9EE6DA0A6C2 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD5F96DF2C1172AF65848311 /* search@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,14 +102,17 @@
 		663D52DD1A59989700222845 /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tint.m"; sourceTree = "<group>"; };
 		DD5F903743D39AB895C4BD65 /* CardCollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCollectionHeaderView.h; sourceTree = "<group>"; };
 		DD5F904A2660E9D4644DE13A /* CardDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDetailViewController.m; sourceTree = "<group>"; };
+		DD5F96DF2C1172AF65848311 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
 		DD5F96F09EE42B76EFA16CB3 /* SetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetTableViewCell.h; sourceTree = "<group>"; };
 		DD5F96FFF7D6F6B356CD720F /* CardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCollectionViewCell.h; sourceTree = "<group>"; };
 		DD5F98BDB213ABD0BAB6B11D /* CardCollectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardCollectionHeaderView.m; sourceTree = "<group>"; };
 		DD5F9909F436264E00DF6AEA /* SetsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetsTableViewController.h; sourceTree = "<group>"; };
 		DD5F9A48CA65135C82CD8E5A /* SetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetTableViewCell.m; sourceTree = "<group>"; };
 		DD5F9A8AF89C78D2B21E65F9 /* CardDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDetailViewController.h; sourceTree = "<group>"; };
+		DD5F9AD58AF71AB9C4BD8296 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		DD5F9CF2BD8146F7D8ACC50B /* SetsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetsTableViewController.m; sourceTree = "<group>"; };
 		DD5F9E6F9F3A20DB7F5716AA /* CardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardCollectionViewCell.m; sourceTree = "<group>"; };
+		DD5F9F085E4A55C1FFB4D31E /* search@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@3x.png"; sourceTree = "<group>"; };
 		E384666727C0A7B84282CCE5 /* Pods-mtg.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mtg.release.xcconfig"; path = "Pods/Target Support Files/Pods-mtg/Pods-mtg.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -254,6 +260,9 @@
 				663D52C91A58A54200222845 /* picture_list@3x.png */,
 				663D52C71A58A52E00222845 /* picture_list@2x.png */,
 				663D52C51A58A50900222845 /* picture_list.png */,
+				DD5F9AD58AF71AB9C4BD8296 /* search.png */,
+				DD5F96DF2C1172AF65848311 /* search@2x.png */,
+				DD5F9F085E4A55C1FFB4D31E /* search@3x.png */,
 			);
 			name = assets;
 			sourceTree = "<group>";
@@ -421,6 +430,9 @@
 				6615F77E1A61B5A900240545 /* favorites@3x.png in Resources */,
 				6615F7821A622F9C00240545 /* favorites_empty.png in Resources */,
 				6615F7831A622F9C00240545 /* favorites_empty@2x.png in Resources */,
+				DD5F983F48CEEC4DA1D3EFDF /* search.png in Resources */,
+				DD5F9FFC9AF9E9EE6DA0A6C2 /* search@2x.png in Resources */,
+				DD5F9C199612A369DBF0D199 /* search@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -53,15 +53,19 @@
     self.collectionView.dataSource = self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 
     if (isFavorites) {
-        [self.collectionView deleteItemsAtIndexPaths:cardsToRemove];
-        [self.collectionView insertItemsAtIndexPaths:cardsToAdd];
+        if (cardsToRemove.count > 0) {
+            [self.collectionView deleteItemsAtIndexPaths:cardsToRemove];
+            [cardsToRemove removeAllObjects];
+        }
 
-        [cardsToRemove removeAllObjects];
-        [cardsToAdd removeAllObjects];
+        if (cardsToAdd.count > 0) {
+            [self.collectionView insertItemsAtIndexPaths:cardsToAdd];
+            [cardsToAdd removeAllObjects];
+        }
     }
 }
 

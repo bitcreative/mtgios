@@ -18,6 +18,7 @@
                     <connections>
                         <segue destination="bos-hW-p2E" kind="relationship" relationship="viewControllers" id="FyP-Gq-Suq"/>
                         <segue destination="a3m-yd-u3w" kind="relationship" relationship="viewControllers" id="pJm-gO-kUL"/>
+                        <segue destination="fs6-rx-3tv" kind="relationship" relationship="viewControllers" id="0yl-Ir-dym"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eP9-5C-L0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -241,6 +242,67 @@
             </objects>
             <point key="canvasLocation" x="1075" y="1056"/>
         </scene>
+        <!--Search-->
+        <scene sceneID="Sal-NX-9gc">
+            <objects>
+                <tableViewController id="KPo-xX-E2p" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="K2c-hN-YH5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Cost" id="x6F-uf-4bw">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hZo-SF-vqI">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hZo-SF-vqI" id="iE8-yf-cqr">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Colors" id="NF4-tW-Bda">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3ae-JS-72s">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3ae-JS-72s" id="z4h-W4-e2u">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="KPo-xX-E2p" id="jZ6-hQ-Zlb"/>
+                            <outlet property="delegate" destination="KPo-xX-E2p" id="ft6-lz-HH2"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Search" id="zIh-7h-ggW"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aXW-W3-A6R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1080" y="268"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="l6R-ea-Q37">
+            <objects>
+                <navigationController id="fs6-rx-3tv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" image="search.png" id="tCI-Ns-oVR"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cfp-sW-vbd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="0.0"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="KPo-xX-E2p" kind="relationship" relationship="rootViewController" id="wnj-I5-QZJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bhs-3t-Wue" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="268"/>
+        </scene>
         <!--Sets-->
         <scene sceneID="GFp-mp-9ge">
             <objects>
@@ -392,6 +454,7 @@
     <resources>
         <image name="favorites_empty.png" width="32" height="32"/>
         <image name="picture_list.png" width="32" height="32"/>
+        <image name="search.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="sY5-I2-3u1"/>
