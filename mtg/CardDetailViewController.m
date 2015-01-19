@@ -7,6 +7,7 @@
 //
 
 #import <CSStickyHeaderFlowLayout/CSStickyHeaderFlowLayout.h>
+#import <SDWebImage/SDWebImageManager.h>
 
 #import "CardDetailViewController.h"
 #import "CardDetailHeaderCell.h"
@@ -28,7 +29,7 @@
         self.favoriteButton.target = self;
         self.favoriteButton.action = @selector(toggleFavorite);
 
-        if([store isCardFavorite:self.card]) {
+        if ([store isCardFavorite:self.card]) {
             self.favoriteButton.image = [UIImage imageNamed:@"favorites.png"];
         }
 
@@ -55,7 +56,7 @@
 
 - (void)toggleFavorite {
     Store *store = [Store sharedStore];
-    if(![store isCardFavorite:self.card]) {
+    if (![store isCardFavorite:self.card]) {
         self.favoriteButton.image = [UIImage imageNamed:@"favorites.png"];
         [store addFavoriteCard:self.card].catch(^(NSError *error) {
             self.favoriteButton.image = [UIImage imageNamed:@"favorites_empty.png"];
@@ -68,23 +69,69 @@
     }
 }
 
+- (void)updatedAttributedTextForCell:(CardTextTableViewCell *)cell {
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    NSString *cardString = self.card[@"text"];
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:cardString];
+    NSRegularExpression *symbolRegex = [NSRegularExpression regularExpressionWithPattern:@"\\{([^}]+)\\}"
+                                                                                 options:NSRegularExpressionCaseInsensitive
+                                                                                   error:nil];
+    NSArray *matches = [symbolRegex matchesInString:cardString options:nil range:NSMakeRange(0, cardString.length)];
+    NSInteger matchesCount = matches.count;
+    __block NSInteger totalCount = 0;
+
+    if (matchesCount > 0) {
+        for (NSTextCheckingResult *result in matches.reverseObjectEnumerator) {
+            NSString *symbol = [[cardString substringWithRange:result.range]
+                    stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"{}"]];
+            symbol = [symbol stringByReplacingOccurrencesOfString:@"/" withString:@""];
+            NSString *formatString = @"http://mtgimage.com/symbol/mana/%@/64.png";
+            if ([symbol isEqualToString:@"T"]) {
+                formatString = @"http://mtgimage.com/symbol/other/%@/64.png";
+            }
+            NSTextAttachment *symbolAttachment = [[NSTextAttachment alloc] init];
+            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:formatString, symbol]];
+            [manager downloadImageWithURL:url
+                                  options:SDWebImageContinueInBackground
+                                 progress:nil
+                                completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageUrl) {
+                                    if (image) {
+                                        symbolAttachment.image = image;
+                                        symbolAttachment.bounds = CGRectMake(0, -2, 14, 14);
+                                        [string replaceCharactersInRange:result.range
+                                                    withAttributedString:[NSAttributedString attributedStringWithAttachment:symbolAttachment]];
+                                        totalCount += 1;
+                                    } else { NSLog(@"%@, %@", error.localizedDescription, url.absoluteString); }
+
+                                    if (totalCount == matchesCount) {
+                                        cell.cardText.adjustsFontSizeToFitWidth = YES;
+                                        cell.cardText.attributedText = string;
+                                        totalCount = 0;
+                                    }
+                                }];
+        }
+    }
+}
+
 #pragma mark - UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1 || indexPath.section == 2) {
         CardTextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"textCell"
-                                                                                forIndexPath:indexPath];
-        NSString *text;
+                                                                      forIndexPath:indexPath];
+        NSMutableAttributedString *text;
         if (indexPath.section == 1) {
-            text = self.card[@"text"];
+            text = [[NSMutableAttributedString alloc] initWithString:self.card[@"text"]];
+            [self updatedAttributedTextForCell:cell];
         } else if (indexPath.section == 2) {
-            text = self.card[@"flavor"];
-            if (!text) {
-                text = @"No flavor text";
+            if (!self.card[@"flavor"]) {
+                text = [[NSMutableAttributedString alloc] initWithString:@"No flavor text"];
+            } else {
+                text = [[NSMutableAttributedString alloc] initWithString:self.card[@"flavor"]];
             }
         }
 
-        cell.cardText.text = text;
+        cell.cardText.attributedText = text;
         return cell;
     } else if (indexPath.section == 3) {
         CardPriceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"priceCell"
@@ -122,7 +169,7 @@
                      range:range];
     }
 
-    CardDetailTextHeaderCell *cell = (CardDetailTextHeaderCell *)[self.tableView dequeueReusableCellWithIdentifier:@"cardDetailTextHeader"];
+    CardDetailTextHeaderCell *cell = (CardDetailTextHeaderCell *) [self.tableView dequeueReusableCellWithIdentifier:@"cardDetailTextHeader"];
     cell.headerLabel.attributedText = text;
     return cell;
 }
