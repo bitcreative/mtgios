@@ -32,10 +32,10 @@
 		663D52C81A58A52E00222845 /* picture_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 663D52C71A58A52E00222845 /* picture_list@2x.png */; };
 		663D52CA1A58A54200222845 /* picture_list@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 663D52C91A58A54200222845 /* picture_list@3x.png */; };
 		663D52D21A58A76A00222845 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D52D11A58A76A00222845 /* Store.m */; };
-		663D52D61A58ABB000222845 /* AllSets.json in Resources */ = {isa = PBXBuildFile; fileRef = 663D52D51A58ABB000222845 /* AllSets.json */; };
 		663D52DE1A59989700222845 /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D52DB1A59989700222845 /* UIImage+ProportionalFill.m */; };
 		663D52DF1A59989700222845 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D52DD1A59989700222845 /* UIImage+Tint.m */; };
 		66A55FD51A6DAF94009DFAE1 /* AllSetsExtra.json.zip in Resources */ = {isa = PBXBuildFile; fileRef = 66A55FD41A6DAF94009DFAE1 /* AllSetsExtra.json.zip */; };
+		66A55FD71A6DB579009DFAE1 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A55FD61A6DB579009DFAE1 /* libz.dylib */; };
 		DD5F95A8D4E0AD721EEC061A /* SetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9A48CA65135C82CD8E5A /* SetTableViewCell.m */; };
 		DD5F96E4860075175A3111BA /* CardCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F98BDB213ABD0BAB6B11D /* CardCollectionHeaderView.m */; };
 		DD5F978B49D49D34482A9215 /* CardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9E6F9F3A20DB7F5716AA /* CardCollectionViewCell.m */; };
@@ -96,12 +96,12 @@
 		663D52C91A58A54200222845 /* picture_list@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture_list@3x.png"; sourceTree = "<group>"; };
 		663D52D01A58A76A00222845 /* Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
 		663D52D11A58A76A00222845 /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store.m; sourceTree = "<group>"; };
-		663D52D51A58ABB000222845 /* AllSets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AllSets.json; sourceTree = "<group>"; };
 		663D52DA1A59989700222845 /* UIImage+ProportionalFill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ProportionalFill.h"; sourceTree = "<group>"; };
 		663D52DB1A59989700222845 /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
 		663D52DC1A59989700222845 /* UIImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tint.h"; sourceTree = "<group>"; };
 		663D52DD1A59989700222845 /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tint.m"; sourceTree = "<group>"; };
 		66A55FD41A6DAF94009DFAE1 /* AllSetsExtra.json.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = AllSetsExtra.json.zip; sourceTree = "<group>"; };
+		66A55FD61A6DB579009DFAE1 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DD5F903743D39AB895C4BD65 /* CardCollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCollectionHeaderView.h; sourceTree = "<group>"; };
 		DD5F904A2660E9D4644DE13A /* CardDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDetailViewController.m; sourceTree = "<group>"; };
 		DD5F96DF2C1172AF65848311 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
@@ -123,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66A55FD71A6DB579009DFAE1 /* libz.dylib in Frameworks */,
 				14581EE80E01D5586428D350 /* libPods-mtg.a in Frameworks */,
 				6615F7721A60D4E400240545 /* CloudKit.framework in Frameworks */,
 			);
@@ -150,6 +151,7 @@
 		1854844DD1E635D05A9B8744 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				66A55FD61A6DB579009DFAE1 /* libz.dylib */,
 				6615F7711A60D4E400240545 /* CloudKit.framework */,
 				324A5DD15157CBF6F27121D4 /* libPods-mtg.a */,
 			);
@@ -214,7 +216,6 @@
 			isa = PBXGroup;
 			children = (
 				66A55FD41A6DAF94009DFAE1 /* AllSetsExtra.json.zip */,
-				663D52D51A58ABB000222845 /* AllSets.json */,
 				663D529E1A58A3BD00222845 /* Info.plist */,
 				663D529F1A58A3BD00222845 /* main.m */,
 			);
@@ -419,7 +420,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				663D52D61A58ABB000222845 /* AllSets.json in Resources */,
 				6615F77C1A61B55B00240545 /* favorites@2x.png in Resources */,
 				663D52A91A58A3BD00222845 /* Main.storyboard in Resources */,
 				6615F7841A622F9C00240545 /* favorites_empty@3x.png in Resources */,

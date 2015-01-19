@@ -7,10 +7,10 @@
 //
 
 #import <Underscore.h>
-#import <TFHpple.h>
 
 #import "Store.h"
 #import "Promise.h"
+#import "SSZipArchive.h"
 
 #define _ Underscore
 
@@ -46,7 +46,6 @@
             if (status == CKAccountStatusAvailable) {
                 privateDatabase = [container privateCloudDatabase];
 
-                [self setupSubscribe];
                 [self loadFavorites];
             }
         }];
@@ -55,7 +54,19 @@
 }
 
 - (void)loadData {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"AllSets" ofType:@"json"];
+    NSString *path;
+    NSString *finalFilePath = [[NSBundle mainBundle] pathForResource:@"AllSetsExtra" ofType:@"json"];
+    if (!finalFilePath) {
+        path = [[NSBundle mainBundle] pathForResource:@"AllSetsExtra.json" ofType:@"zip"];
+        NSString *unzipPath = [NSString stringWithFormat:@"%@", [[NSBundle mainBundle] resourcePath]];
+        [SSZipArchive unzipFileAtPath:path toDestination:unzipPath];
+    }
+
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "ResourceNotFoundInspection"
+    path = [NSString stringWithFormat:@"%@/AllSetsExtra.json", [[NSBundle mainBundle] resourcePath]];
+#pragma clang diagnostic pop
+
     NSData *data = [NSData dataWithContentsOfFile:path];
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     cards = _.dict(dict).filterValues(^(NSDictionary *set) {
@@ -262,12 +273,6 @@
     }).reduce(@0, ^(NSNumber *curr, NSArray *setCards) {
         return @(curr.integerValue + setCards.count);
     });
-}
-
-- (NSArray *)priceNodeValues:(NSArray *)nodes {
-    return _.array(nodes).map(^(TFHppleElement *elem) {
-        return elem.text;
-    }).unwrap;
 }
 
 @end
