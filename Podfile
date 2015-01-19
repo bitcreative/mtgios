@@ -8,7 +8,7 @@ target 'mtg' do
   pod 'AFNetworking', '~> 2.4.1'
   pod 'Underscore.m', :git => 'https://github.com/robb/Underscore.m.git', :branch => 'development'
   pod 'CSStickyHeaderFlowLayout', '~> 0.2.3'
-  pod 'hpple', '~> 0.2.0'
+  pod 'SSZipArchive', '~> 0.3.2'
   pod 'PromiseKit'
   pod 'PromiseKit-AFNetworking'
 end
