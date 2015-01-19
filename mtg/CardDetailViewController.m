@@ -107,18 +107,23 @@
         return cell;
     }
 
-    NSString *text;
+    NSMutableAttributedString *text;
 
     if (section == 1) {
-        text = @"Text";
+        text = [[NSMutableAttributedString alloc] initWithString:@"Text"];
     } else if (section == 2) {
-        text = @"Flavor";
+        text = [[NSMutableAttributedString alloc] initWithString:@"Flavor"];
     } else if (section == 3) {
-        text = @"Prices";
+        NSString *string = @"Prices (from TCGPlayer)";
+        NSRange range = NSMakeRange(6, string.length - 6);
+        text = [[NSMutableAttributedString alloc] initWithString:string];
+        [text addAttribute:NSFontAttributeName
+                     value:[UIFont fontWithName:@"HelveticaNeue-Thin" size:11]
+                     range:range];
     }
 
     CardDetailTextHeaderCell *cell = (CardDetailTextHeaderCell *)[self.tableView dequeueReusableCellWithIdentifier:@"cardDetailTextHeader"];
-    cell.headerLabel.text = text;
+    cell.headerLabel.attributedText = text;
     return cell;
 }
 
@@ -126,7 +131,7 @@
     if (section == 0) {
         return 120;
     }
-    return 30;
+    return 35;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

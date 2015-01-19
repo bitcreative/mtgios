@@ -35,6 +35,7 @@
 		663D52D61A58ABB000222845 /* AllSets.json in Resources */ = {isa = PBXBuildFile; fileRef = 663D52D51A58ABB000222845 /* AllSets.json */; };
 		663D52DE1A59989700222845 /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D52DB1A59989700222845 /* UIImage+ProportionalFill.m */; };
 		663D52DF1A59989700222845 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D52DD1A59989700222845 /* UIImage+Tint.m */; };
+		66A55FD51A6DAF94009DFAE1 /* AllSetsExtra.json.zip in Resources */ = {isa = PBXBuildFile; fileRef = 66A55FD41A6DAF94009DFAE1 /* AllSetsExtra.json.zip */; };
 		DD5F95A8D4E0AD721EEC061A /* SetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9A48CA65135C82CD8E5A /* SetTableViewCell.m */; };
 		DD5F96E4860075175A3111BA /* CardCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F98BDB213ABD0BAB6B11D /* CardCollectionHeaderView.m */; };
 		DD5F978B49D49D34482A9215 /* CardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9E6F9F3A20DB7F5716AA /* CardCollectionViewCell.m */; };
@@ -100,6 +101,7 @@
 		663D52DB1A59989700222845 /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
 		663D52DC1A59989700222845 /* UIImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tint.h"; sourceTree = "<group>"; };
 		663D52DD1A59989700222845 /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tint.m"; sourceTree = "<group>"; };
+		66A55FD41A6DAF94009DFAE1 /* AllSetsExtra.json.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = AllSetsExtra.json.zip; sourceTree = "<group>"; };
 		DD5F903743D39AB895C4BD65 /* CardCollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCollectionHeaderView.h; sourceTree = "<group>"; };
 		DD5F904A2660E9D4644DE13A /* CardDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDetailViewController.m; sourceTree = "<group>"; };
 		DD5F96DF2C1172AF65848311 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 		663D529D1A58A3BD00222845 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				66A55FD41A6DAF94009DFAE1 /* AllSetsExtra.json.zip */,
 				663D52D51A58ABB000222845 /* AllSets.json */,
 				663D529E1A58A3BD00222845 /* Info.plist */,
 				663D529F1A58A3BD00222845 /* main.m */,
@@ -424,6 +427,7 @@
 				663D52CA1A58A54200222845 /* picture_list@3x.png in Resources */,
 				6615F77A1A61B54800240545 /* favorites.png in Resources */,
 				6615F76F1A5F6B0600240545 /* PriceView.xib in Resources */,
+				66A55FD51A6DAF94009DFAE1 /* AllSetsExtra.json.zip in Resources */,
 				663D52C61A58A50900222845 /* picture_list.png in Resources */,
 				663D52C81A58A52E00222845 /* picture_list@2x.png in Resources */,
 				663D52AB1A58A3BD00222845 /* Images.xcassets in Resources */,
