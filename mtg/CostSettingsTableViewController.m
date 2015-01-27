@@ -50,7 +50,7 @@
     cell.textLabel.text = text;
 
     if ([self.manaCosts containsObject:@(indexPath.row)]) {
-        cell.selected = YES;
+        [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:nil];
     }
     
     return cell;

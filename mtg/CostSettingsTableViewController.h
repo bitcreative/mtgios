@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class SearchTableViewController;
+
 @interface CostSettingsTableViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *manaCosts;
