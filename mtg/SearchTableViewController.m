@@ -4,7 +4,12 @@
 //
 
 #import "SearchTableViewController.h"
-#import "CostSettingsTableViewController.h"
+#import "CostSearchTableViewController.h"
+#import "Store.h"
+#import "Underscore.h"
+#import "SearchResultsTableViewController.h"
+
+#define _ Underscore
 
 @implementation SearchTableViewController
 
@@ -51,8 +56,25 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    CostSettingsTableViewController *vc = (CostSettingsTableViewController *) segue.destinationViewController;
-    vc.manaCosts = self.manaCosts;
+    Store *store = [Store sharedStore];
+    if ([segue.identifier isEqualToString:@"showCostSettings"]) {
+        CostSearchTableViewController *vc = (CostSearchTableViewController *)segue.destinationViewController;
+        vc.manaCosts = self.manaCosts;
+    } else if ([segue.identifier isEqualToString:@"searchResults"]) {
+        NSArray *manaPredicates = _.array(self.manaCosts).map(^(NSNumber *cost) {
+            NSString *format = @"cmc == %@";
+            if ([cost isEqualToNumber:@7]) {
+                format = @"cmc >= %@";
+            }
+            return [NSPredicate predicateWithFormat:format, cost];
+        }).unwrap;
+
+        NSCompoundPredicate *manaPredicate = [NSCompoundPredicate orPredicateWithSubpredicates:manaPredicates];
+        NSArray *array = [[store allCards] filteredArrayUsingPredicate:manaPredicate];
+
+        SearchResultsTableViewController *vc = (SearchResultsTableViewController *)segue.destinationViewController;
+        vc.cards = array;
+    }
 
     [super prepareForSegue:segue sender:self];
 }

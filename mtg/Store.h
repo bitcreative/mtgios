@@ -38,6 +38,7 @@ typedef NS_ENUM (NSInteger, FavoritesOperation) {
 - (PMKPromise *)removeFavoriteCard:(NSDictionary *)card;
 - (BOOL)isCardFavorite:(NSDictionary *)card;
 - (NSArray *)favorites;
+- (NSArray *)allCards;
 
 - (NSDictionary *)cardWithMultiverseId:(NSString *)id;
 - (NSArray *)cardsForSet:(NSString *)set;

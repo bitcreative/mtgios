@@ -1,5 +1,5 @@
 //
-//  CostSettingsTableViewController.h
+//  CostSearchTableViewController.h
 //  mtg
 //
 //  Created by Omar Estrella on 1/26/15.
@@ -10,7 +10,7 @@
 
 @class SearchTableViewController;
 
-@interface CostSettingsTableViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
+@interface CostSearchTableViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *manaCosts;
 

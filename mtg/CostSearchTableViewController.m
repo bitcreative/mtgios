@@ -1,18 +1,18 @@
 //
-//  CostSettingsTableViewController.m
+//  CostSearchTableViewController.m
 //  mtg
 //
 //  Created by Omar Estrella on 1/26/15.
 //  Copyright (c) 2015 Omar Estrella. All rights reserved.
 //
 
-#import "CostSettingsTableViewController.h"
+#import "CostSearchTableViewController.h"
 
-@interface CostSettingsTableViewController ()
+@interface CostSearchTableViewController ()
 
 @end
 
-@implementation CostSettingsTableViewController
+@implementation CostSearchTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

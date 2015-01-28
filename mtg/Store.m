@@ -249,6 +249,10 @@
     return localFavorites;
 }
 
+- (NSArray *)allCards {
+    return [idCardMap allValues];
+}
+
 - (NSDictionary *)cardWithMultiverseId:(NSString *)id {
     return idCardMap[id];
 }
