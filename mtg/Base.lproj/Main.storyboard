@@ -335,14 +335,38 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="" id="bOg-ax-Z0h">
+                            <tableViewSection headerTitle="Contains" id="bOg-ax-Z0h">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="ihX-pm-nrW" style="IBUITableViewCellStyleDefault" id="r0i-ze-jTH">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="uUe-nQ-CLZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r0i-ze-jTH" id="nC6-xw-RVX">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uUe-nQ-CLZ" id="JuB-lq-dx4">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Perform Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ihX-pm-nrW">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name, text, etc." minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="IH5-Jn-E45">
+                                                    <rect key="frame" x="16" y="8" width="576" height="28"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="IH5-Jn-E45" secondAttribute="bottom" id="2EK-q0-m8X"/>
+                                                <constraint firstItem="IH5-Jn-E45" firstAttribute="leading" secondItem="JuB-lq-dx4" secondAttribute="leadingMargin" constant="8" id="2w4-hz-mmT"/>
+                                                <constraint firstItem="IH5-Jn-E45" firstAttribute="trailing" secondItem="JuB-lq-dx4" secondAttribute="trailingMargin" id="LWi-pn-rgr"/>
+                                                <constraint firstItem="IH5-Jn-E45" firstAttribute="top" secondItem="JuB-lq-dx4" secondAttribute="topMargin" id="ehT-v1-iQT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="" id="eUs-0X-i6y">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="dJp-zA-8uH" style="IBUITableViewCellStyleDefault" id="gSU-2v-ZeQ">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gSU-2v-ZeQ" id="VwD-nc-A3l">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Perform Search" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dJp-zA-8uH">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -351,7 +375,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="PhJ-HT-624" kind="show" identifier="searchResults" id="Bm2-oC-uyS"/>
+                                            <segue destination="PhJ-HT-624" kind="show" identifier="searchResults" id="0fD-lM-Bfb"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -364,6 +388,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Search" id="zIh-7h-ggW"/>
                     <connections>
+                        <outlet property="containsTextField" destination="IH5-Jn-E45" id="sIg-XX-XVy"/>
                         <segue destination="Hrm-Qs-JfP" kind="show" identifier="showCostSettings" id="Cet-Br-dwi"/>
                     </connections>
                 </tableViewController>

@@ -17,14 +17,23 @@
     [super viewDidLoad];
 
     self.tableView.delegate = self;
+    self.containsTextField.delegate = self;
 
     self.manaCosts = [[NSMutableArray alloc] init];
+
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    tap.cancelsTouchesInView = NO;
+    [self.tableView addGestureRecognizer:tap];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self updateManaCostText];
 
     [super viewWillAppear:animated];
+}
+
+- (void)dismissKeyboard {
+    [self.containsTextField resignFirstResponder];
 }
 
 - (void)updateManaCostText {

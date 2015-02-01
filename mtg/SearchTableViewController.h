@@ -5,8 +5,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SearchTableViewController : UITableViewController<UITableViewDelegate>
+@interface SearchTableViewController : UITableViewController<UITableViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) NSMutableArray *manaCosts;
+
+@property (weak, nonatomic) IBOutlet UITextField *containsTextField;
 
 @end
