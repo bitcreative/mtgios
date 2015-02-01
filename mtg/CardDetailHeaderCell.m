@@ -64,12 +64,13 @@
 
 - (void)setupMana:(NSDictionary *)card {
     NSString *manaCost = card[@"manaCost"];
+    manaCost = [manaCost stringByReplacingOccurrencesOfString:@"/" withString:@""];
 
     NSRange range = NSMakeRange(0, manaCost.length);
     NSRegularExpression *colorlessRegex = [NSRegularExpression regularExpressionWithPattern:@"\\{(\\d)\\}"
                                                                                     options:0
                                                                                       error:nil];
-    NSRegularExpression *colorRegex = [NSRegularExpression regularExpressionWithPattern:@"\\{([^\\d])\\}"
+    NSRegularExpression *colorRegex = [NSRegularExpression regularExpressionWithPattern:@"\\{([^}^\\d]+)\\}"
                                                                                options:0
                                                                                  error:nil];
     if (manaCost) {
@@ -89,6 +90,7 @@
 - (void)downloadManaImages:(NSArray *)matches forCard:(NSDictionary *)card {
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
     NSString *manaCost = card[@"manaCost"];
+    manaCost = [manaCost stringByReplacingOccurrencesOfString:@"/" withString:@""];
     NSString *imageFmt = @"http://mtgimage.com/symbol/mana/%@/48.png";
 
     _.array(matches).map(^(NSTextCheckingResult *result) {

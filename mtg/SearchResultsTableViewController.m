@@ -5,6 +5,8 @@
 
 #import "SearchResultsTableViewController.h"
 #import "Underscore.h"
+#import "CardDetailViewController.h"
+#import "Store.h"
 
 #define _ Underscore
 
@@ -13,16 +15,16 @@
 #pragma mark - UITableViewDataSource
 
 - (void)viewDidLoad {
-    NSMutableArray *cardNames = [@[] mutableCopy];
-    self.cards = _.array(self.cards).filter(^(NSDictionary *card) {
-        NSString *name = card[@"name"];
-        if (![cardNames containsObject:name]) {
-            [cardNames addObject:name];
-            return YES;
-        }
-
-        return NO;
-    }).unwrap;
+//    NSMutableArray *cardNames = [@[] mutableCopy];
+//    self.cards = _.array(self.cards).filter(^(NSDictionary *card) {
+//        NSString *name = card[@"name"];
+//        if (![cardNames containsObject:name]) {
+//            [cardNames addObject:name];
+//            return YES;
+//        }
+//
+//        return NO;
+//    }).unwrap;
 
     [super viewDidLoad];
 }
@@ -40,6 +42,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.cards.count;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    CardDetailViewController *vc = (CardDetailViewController *)segue.destinationViewController;
+    NSIndexPath *path = [self.tableView indexPathForCell:(UITableViewCell *)sender];
+    NSDictionary *card = self.cards[(uint)path.row];
+    NSDictionary *set = [[Store sharedStore] setForCard:card];
+    vc.card = card;
+    vc.set = set;
+
 }
 
 @end

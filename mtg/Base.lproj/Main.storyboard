@@ -380,7 +380,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="a0V-rd-JEd" style="IBUITableViewCellStyleDefault" id="Q4V-qT-arn">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="a0V-rd-JEd" style="IBUITableViewCellStyleDefault" id="Q4V-qT-arn">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q4V-qT-arn" id="8Is-2c-uwT">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -393,6 +393,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="82F-AG-3Ls" kind="show" id="ux8-3M-i5s"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -580,6 +583,6 @@
         <image name="search.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sY5-I2-3u1"/>
+        <segue reference="ux8-3M-i5s"/>
     </inferredMetricsTieBreakers>
 </document>
