@@ -137,7 +137,12 @@
 }
 
 - (NSURL *)imageURLForCard:(NSDictionary *)card inSet:(NSDictionary *)set {
-    NSString *url = [NSString stringWithFormat:@"http://mtgimage.com/set/%@/%@.jpg", set[@"code"], card[@"name"]];
+    NSString *url;
+    if (set) {
+        url = [NSString stringWithFormat:@"http://mtgimage.com/set/%@/%@.jpg", set[@"code"], card[@"name"]];
+    } else {
+        url = [NSString stringWithFormat:@"http://mtgimage.com/card/%@.jpg", card[@"imageName"]];
+    }
     return [NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 

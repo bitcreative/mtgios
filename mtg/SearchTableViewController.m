@@ -70,19 +70,38 @@
         CostSearchTableViewController *vc = (CostSearchTableViewController *)segue.destinationViewController;
         vc.manaCosts = self.manaCosts;
     } else if ([segue.identifier isEqualToString:@"searchResults"]) {
-        NSArray *manaPredicates = _.array(self.manaCosts).map(^(NSNumber *cost) {
-            NSString *format = @"cmc == %@";
-            if ([cost isEqualToNumber:@7]) {
-                format = @"cmc >= %@";
-            }
-            return [NSPredicate predicateWithFormat:format, cost];
-        }).unwrap;
+        NSPredicate *finalPredicate;
+        NSArray *cards = [store allCards];
+        NSMutableArray *predicates = [NSMutableArray array];
 
-        NSCompoundPredicate *manaPredicate = [NSCompoundPredicate orPredicateWithSubpredicates:manaPredicates];
-        NSArray *array = [[store allCards] filteredArrayUsingPredicate:manaPredicate];
+        if (self.manaCosts.count > 0) {
+            NSArray *manaPredicates = _.array(self.manaCosts).map(^(NSNumber *cost) {
+                NSString *format = @"cmc == %@";
+                if ([cost isEqualToNumber:@7]) {
+                    format = @"cmc >= %@";
+                }
+                return [NSPredicate predicateWithFormat:format, cost];
+            }).unwrap;
+
+            [predicates addObject:[NSCompoundPredicate orPredicateWithSubpredicates:manaPredicates]];
+        }
+
+        if (self.containsTextField.text) {
+            NSString *textContains = self.containsTextField.text;
+            NSArray *textPredicates = _.array(@[@"name", @"description"]).map(^(NSString *prop) {
+                return [NSPredicate predicateWithFormat:@"%K contains[cd] %@", prop, textContains];
+            }).unwrap;
+
+            [predicates addObject:[NSCompoundPredicate orPredicateWithSubpredicates:textPredicates]];
+        }
+
+        if (predicates.count > 0) {
+            finalPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
+            cards = [cards filteredArrayUsingPredicate:finalPredicate];
+        }
 
         SearchResultsTableViewController *vc = (SearchResultsTableViewController *)segue.destinationViewController;
-        vc.cards = array;
+        vc.cards = cards;
     }
 
     [super prepareForSegue:segue sender:self];

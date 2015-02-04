@@ -58,7 +58,7 @@
                                 effectView.frame = CGRectMake(0, 0, image.size.width, image.size.height);
                                 [self.contentView insertSubview:effectView belowSubview:self.name];
                                 self.cardImage.image = image;
-                            } else { NSLog(@"@Loading issue: %@", [error localizedDescription]); }
+                            } else { NSLog(@"Loading issue: %@, %@", [error localizedDescription], [url absoluteString]); }
                         }];
 }
 

@@ -15,17 +15,6 @@
 #pragma mark - UITableViewDataSource
 
 - (void)viewDidLoad {
-//    NSMutableArray *cardNames = [@[] mutableCopy];
-//    self.cards = _.array(self.cards).filter(^(NSDictionary *card) {
-//        NSString *name = card[@"name"];
-//        if (![cardNames containsObject:name]) {
-//            [cardNames addObject:name];
-//            return YES;
-//        }
-//
-//        return NO;
-//    }).unwrap;
-
     [super viewDidLoad];
 }
 
