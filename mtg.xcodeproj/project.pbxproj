@@ -34,6 +34,13 @@
 		663D52D21A58A76A00222845 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D52D11A58A76A00222845 /* Store.m */; };
 		663D52DE1A59989700222845 /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D52DB1A59989700222845 /* UIImage+ProportionalFill.m */; };
 		663D52DF1A59989700222845 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D52DD1A59989700222845 /* UIImage+Tint.m */; };
+		66532C4E1A8D8BEE0030489B /* ColorSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66532C4D1A8D8BEE0030489B /* ColorSearchTableViewController.m */; };
+		66532C551A8D91260030489B /* mana_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 66532C501A8D91260030489B /* mana_b.png */; };
+		66532C561A8D91260030489B /* mana_g.png in Resources */ = {isa = PBXBuildFile; fileRef = 66532C511A8D91260030489B /* mana_g.png */; };
+		66532C571A8D91260030489B /* mana_r.png in Resources */ = {isa = PBXBuildFile; fileRef = 66532C521A8D91260030489B /* mana_r.png */; };
+		66532C581A8D91260030489B /* mana_u.png in Resources */ = {isa = PBXBuildFile; fileRef = 66532C531A8D91260030489B /* mana_u.png */; };
+		66532C591A8D91260030489B /* mana_w.png in Resources */ = {isa = PBXBuildFile; fileRef = 66532C541A8D91260030489B /* mana_w.png */; };
+		66532C5C1A8D91A20030489B /* CostSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66532C5B1A8D91A20030489B /* CostSearchTableViewCell.m */; };
 		66A55FD51A6DAF94009DFAE1 /* AllSetsExtra.json.zip in Resources */ = {isa = PBXBuildFile; fileRef = 66A55FD41A6DAF94009DFAE1 /* AllSetsExtra.json.zip */; };
 		66A55FD71A6DB579009DFAE1 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A55FD61A6DB579009DFAE1 /* libz.dylib */; };
 		66B861041A7726C500A56AA9 /* CostSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B861031A7726C500A56AA9 /* CostSearchTableViewController.m */; };
@@ -103,6 +110,15 @@
 		663D52DB1A59989700222845 /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
 		663D52DC1A59989700222845 /* UIImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tint.h"; sourceTree = "<group>"; };
 		663D52DD1A59989700222845 /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tint.m"; sourceTree = "<group>"; };
+		66532C4C1A8D8BEE0030489B /* ColorSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorSearchTableViewController.h; sourceTree = "<group>"; };
+		66532C4D1A8D8BEE0030489B /* ColorSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorSearchTableViewController.m; sourceTree = "<group>"; };
+		66532C501A8D91260030489B /* mana_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mana_b.png; sourceTree = "<group>"; };
+		66532C511A8D91260030489B /* mana_g.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mana_g.png; sourceTree = "<group>"; };
+		66532C521A8D91260030489B /* mana_r.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mana_r.png; sourceTree = "<group>"; };
+		66532C531A8D91260030489B /* mana_u.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mana_u.png; sourceTree = "<group>"; };
+		66532C541A8D91260030489B /* mana_w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mana_w.png; sourceTree = "<group>"; };
+		66532C5A1A8D91A20030489B /* CostSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CostSearchTableViewCell.h; sourceTree = "<group>"; };
+		66532C5B1A8D91A20030489B /* CostSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CostSearchTableViewCell.m; sourceTree = "<group>"; };
 		66A55FD41A6DAF94009DFAE1 /* AllSetsExtra.json.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = AllSetsExtra.json.zip; sourceTree = "<group>"; };
 		66A55FD61A6DB579009DFAE1 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		66B861021A7726C500A56AA9 /* CostSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CostSearchTableViewController.h; sourceTree = "<group>"; };
@@ -269,6 +285,7 @@
 		663D52C41A58A43D00222845 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				66532C4F1A8D8E480030489B /* mana */,
 				6615F77F1A622F9B00240545 /* favorites_empty.png */,
 				6615F7801A622F9C00240545 /* favorites_empty@2x.png */,
 				6615F7811A622F9C00240545 /* favorites_empty@3x.png */,
@@ -290,6 +307,7 @@
 			children = (
 				DD5F9E443874415784F0CF2B /* card */,
 				DD5F98E39E5FB91D91805653 /* sets */,
+				DD5F98CBCF210E24559E1594 /* search */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -314,11 +332,34 @@
 			name = image;
 			sourceTree = "<group>";
 		};
+		66532C4F1A8D8E480030489B /* mana */ = {
+			isa = PBXGroup;
+			children = (
+				66532C501A8D91260030489B /* mana_b.png */,
+				66532C511A8D91260030489B /* mana_g.png */,
+				66532C521A8D91260030489B /* mana_r.png */,
+				66532C531A8D91260030489B /* mana_u.png */,
+				66532C541A8D91260030489B /* mana_w.png */,
+			);
+			name = mana;
+			sourceTree = "<group>";
+		};
 		66B861011A7726A600A56AA9 /* search */ = {
 			isa = PBXGroup;
 			children = (
 				66B861021A7726C500A56AA9 /* CostSearchTableViewController.h */,
 				66B861031A7726C500A56AA9 /* CostSearchTableViewController.m */,
+				66532C4C1A8D8BEE0030489B /* ColorSearchTableViewController.h */,
+				66532C4D1A8D8BEE0030489B /* ColorSearchTableViewController.m */,
+			);
+			name = search;
+			sourceTree = "<group>";
+		};
+		DD5F98CBCF210E24559E1594 /* search */ = {
+			isa = PBXGroup;
+			children = (
+				66532C5A1A8D91A20030489B /* CostSearchTableViewCell.h */,
+				66532C5B1A8D91A20030489B /* CostSearchTableViewCell.m */,
 			);
 			name = search;
 			sourceTree = "<group>";
@@ -446,13 +487,18 @@
 				6615F77C1A61B55B00240545 /* favorites@2x.png in Resources */,
 				663D52A91A58A3BD00222845 /* Main.storyboard in Resources */,
 				6615F7841A622F9C00240545 /* favorites_empty@3x.png in Resources */,
+				66532C551A8D91260030489B /* mana_b.png in Resources */,
 				663D52AE1A58A3BD00222845 /* LaunchScreen.xib in Resources */,
 				663D52CA1A58A54200222845 /* picture_list@3x.png in Resources */,
 				6615F77A1A61B54800240545 /* favorites.png in Resources */,
 				6615F76F1A5F6B0600240545 /* PriceView.xib in Resources */,
+				66532C591A8D91260030489B /* mana_w.png in Resources */,
 				66A55FD51A6DAF94009DFAE1 /* AllSetsExtra.json.zip in Resources */,
 				663D52C61A58A50900222845 /* picture_list.png in Resources */,
 				663D52C81A58A52E00222845 /* picture_list@2x.png in Resources */,
+				66532C581A8D91260030489B /* mana_u.png in Resources */,
+				66532C571A8D91260030489B /* mana_r.png in Resources */,
+				66532C561A8D91260030489B /* mana_g.png in Resources */,
 				663D52AB1A58A3BD00222845 /* Images.xcassets in Resources */,
 				6615F77E1A61B5A900240545 /* favorites@3x.png in Resources */,
 				6615F7821A622F9C00240545 /* favorites_empty.png in Resources */,
@@ -519,7 +565,9 @@
 				663D52A01A58A3BD00222845 /* main.m in Sources */,
 				663D52DE1A59989700222845 /* UIImage+ProportionalFill.m in Sources */,
 				DD5F9F8329649BA7B8067F51 /* SetsTableViewController.m in Sources */,
+				66532C5C1A8D91A20030489B /* CostSearchTableViewCell.m in Sources */,
 				DD5F978B49D49D34482A9215 /* CardCollectionViewCell.m in Sources */,
+				66532C4E1A8D8BEE0030489B /* ColorSearchTableViewController.m in Sources */,
 				6615F7681A5F69EF00240545 /* CardPriceTableViewCell.m in Sources */,
 				6615F7651A5CD3A100240545 /* CardTextTableViewCell.m in Sources */,
 				DD5F96E4860075175A3111BA /* CardCollectionHeaderView.m in Sources */,

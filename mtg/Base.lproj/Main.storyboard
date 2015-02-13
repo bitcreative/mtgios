@@ -256,10 +256,10 @@
             </objects>
             <point key="canvasLocation" x="1075" y="1056"/>
         </scene>
-        <!--Cost Search Table View Controller-->
+        <!--Mana Cost-->
         <scene sceneID="58T-IY-22N">
             <objects>
-                <tableViewController id="Hrm-Qs-JfP" customClass="CostSearchTableViewController" sceneMemberID="viewController">
+                <tableViewController title="Mana Cost" id="Hrm-Qs-JfP" customClass="CostSearchTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="aO5-GN-CV2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -332,6 +332,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="0Mz-hQ-qwA" kind="show" id="4dG-bn-siH"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -395,6 +398,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXW-W3-A6R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1080" y="268"/>
+        </scene>
+        <!--Colors-->
+        <scene sceneID="C64-bu-vfV">
+            <objects>
+                <tableViewController title="Colors" id="0Mz-hQ-qwA" customClass="ColorSearchTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" id="vfn-Gg-tqi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="cell" rowHeight="48" id="zlB-kR-Odi" customClass="CostSearchTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zlB-kR-Odi" id="Nz1-vS-bxo">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qtR-bW-na1">
+                                            <rect key="frame" x="521" y="4" width="32" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="32" id="F2c-JC-Rlo"/>
+                                                <constraint firstAttribute="width" constant="32" id="Jgn-w3-hbb"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="47b-q4-9qm">
+                                            <rect key="frame" x="8" y="14" width="417" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerY" secondItem="47b-q4-9qm" secondAttribute="centerY" constant="-0.25" id="1S9-GY-kMf"/>
+                                        <constraint firstItem="qtR-bW-na1" firstAttribute="top" secondItem="Nz1-vS-bxo" secondAttribute="topMargin" id="7dM-bS-ruF"/>
+                                        <constraint firstItem="qtR-bW-na1" firstAttribute="leading" secondItem="47b-q4-9qm" secondAttribute="trailing" constant="96" id="LCC-hg-H7a"/>
+                                        <constraint firstAttribute="centerY" secondItem="qtR-bW-na1" secondAttribute="centerY" constant="3.25" id="c4W-hl-5LN"/>
+                                        <constraint firstItem="qtR-bW-na1" firstAttribute="trailing" secondItem="Nz1-vS-bxo" secondAttribute="trailingMargin" id="cYY-Z8-pFH"/>
+                                        <constraint firstItem="47b-q4-9qm" firstAttribute="leading" secondItem="Nz1-vS-bxo" secondAttribute="leadingMargin" id="lgU-OI-pnv"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="qtR-bW-na1" secondAttribute="bottom" id="o2Y-WV-YAu"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="7dM-bS-ruF"/>
+                                            <exclude reference="o2Y-WV-YAu"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="colorImage" destination="qtR-bW-na1" id="dKy-A9-dw1"/>
+                                    <outlet property="colorLabel" destination="47b-q4-9qm" id="m4s-nz-6XS"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0Mz-hQ-qwA" id="EEU-M7-OCk"/>
+                            <outlet property="delegate" destination="0Mz-hQ-qwA" id="WIQ-KZ-xwP"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OPO-Kz-pPb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1813" y="-534"/>
         </scene>
         <!--Search Results-->
         <scene sceneID="BYC-bv-rY2">
