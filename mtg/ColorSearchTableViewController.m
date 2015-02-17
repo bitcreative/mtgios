@@ -72,7 +72,33 @@
     cell.colorLabel.text = color;
     cell.colorImage.image = [UIImage imageWithData:data];
 
+    if (indexPath.section == 0) {
+        if ([self.include containsObject:color]) {
+            [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:nil];
+        }
+    } else if (indexPath.section == 1) {
+        if ([self.exclude containsObject:color]) {
+            [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:nil];
+        }
+    }
+
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        [self.include addObject:colors[(uint)indexPath.row]];
+    } else if (indexPath.section == 1) {
+        [self.exclude addObject:colors[(uint)indexPath.row]];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        [self.include removeObject:colors[(uint)indexPath.row]];
+    } else if (indexPath.section == 1) {
+        [self.exclude removeObject:colors[(uint)indexPath.row]];
+    }
 }
 
 @end

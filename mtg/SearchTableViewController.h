@@ -8,6 +8,8 @@
 @interface SearchTableViewController : UITableViewController<UITableViewDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) NSMutableArray *manaCosts;
+@property (nonatomic, strong) NSMutableArray *includeColors;
+@property (nonatomic, strong) NSMutableArray *excludeColors;
 
 @property (weak, nonatomic) IBOutlet UITextField *containsTextField;
 

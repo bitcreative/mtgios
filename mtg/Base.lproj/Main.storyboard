@@ -333,7 +333,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="0Mz-hQ-qwA" kind="show" id="4dG-bn-siH"/>
+                                            <segue destination="0Mz-hQ-qwA" kind="show" id="4dG-bn-siH" identifier="showColorSettings"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

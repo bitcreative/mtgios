@@ -8,6 +8,7 @@
 #import "Store.h"
 #import "Underscore.h"
 #import "SearchResultsTableViewController.h"
+#import "ColorSearchTableViewController.h"
 
 #define _ Underscore
 
@@ -20,6 +21,8 @@
     self.containsTextField.delegate = self;
 
     self.manaCosts = [[NSMutableArray alloc] init];
+    self.includeColors = [[NSMutableArray alloc] init];
+    self.excludeColors = [[NSMutableArray alloc] init];
 
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     tap.cancelsTouchesInView = NO;
@@ -67,8 +70,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     Store *store = [Store sharedStore];
     if ([segue.identifier isEqualToString:@"showCostSettings"]) {
-        CostSearchTableViewController *vc = (CostSearchTableViewController *)segue.destinationViewController;
+        CostSearchTableViewController *vc = (CostSearchTableViewController *) segue.destinationViewController;
         vc.manaCosts = self.manaCosts;
+    } else if ([segue.identifier isEqualToString:@"showColorSettings"]) {
+        ColorSearchTableViewController *vc = (ColorSearchTableViewController *) segue.destinationViewController;
+        vc.include = self.includeColors;
+        vc.exclude = self.excludeColors;
     } else if ([segue.identifier isEqualToString:@"searchResults"]) {
         NSPredicate *finalPredicate;
         NSArray *cards = [store allCards];
@@ -86,17 +93,29 @@
             [predicates addObject:[NSCompoundPredicate orPredicateWithSubpredicates:manaPredicates]];
         }
 
-        if (self.containsTextField.text) {
+        if (self.containsTextField.text.length > 0) {
             NSString *textContains = self.containsTextField.text;
             NSArray *textPredicates = _.array(@[@"name", @"description"]).map(^(NSString *prop) {
-                return [NSPredicate predicateWithFormat:@"%K contains[cd] %@", prop, textContains];
+                return [NSPredicate predicateWithFormat:@"%K CONTAINS[cd] %@", prop, textContains];
             }).unwrap;
 
             [predicates addObject:[NSCompoundPredicate orPredicateWithSubpredicates:textPredicates]];
         }
 
+        if (self.includeColors.count > 0) {
+            NSPredicate *includePredicate = [NSPredicate predicateWithFormat:@"ANY %@ IN[cd] colors", self.includeColors];
+            [predicates addObject:includePredicate];
+        }
+
+        if (self.excludeColors.count > 0) {
+            NSCompoundPredicate *excludePredicate = [NSCompoundPredicate
+                    notPredicateWithSubpredicate:[NSPredicate predicateWithFormat:@"ANY %@ IN[cd] colors", self.excludeColors]];
+            [predicates addObject:excludePredicate];
+        }
+
         if (predicates.count > 0) {
             finalPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
+            NSLog(@"%@", finalPredicate);
             cards = [cards filteredArrayUsingPredicate:finalPredicate];
         }
 

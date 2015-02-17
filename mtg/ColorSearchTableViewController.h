@@ -10,4 +10,7 @@
 
 @interface ColorSearchTableViewController : UITableViewController
 
+@property (nonatomic, strong) NSMutableArray *include;
+@property (nonatomic, strong) NSMutableArray *exclude;
+
 @end
