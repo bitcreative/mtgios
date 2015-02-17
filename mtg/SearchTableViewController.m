@@ -115,11 +115,19 @@
 
         if (predicates.count > 0) {
             finalPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
-            NSLog(@"%@", finalPredicate);
             cards = [cards filteredArrayUsingPredicate:finalPredicate];
+
+            __block NSMutableSet *set = [NSMutableSet new];
+            cards = [cards filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSDictionary *card, NSDictionary *bindings) {
+                BOOL contains = [set containsObject:card[@"name"]];
+                if (!contains) {
+                    [set addObject:card[@"name"]];
+                }
+                return !contains;
+            }]];
         }
 
-        SearchResultsTableViewController *vc = (SearchResultsTableViewController *)segue.destinationViewController;
+        SearchResultsTableViewController *vc = (SearchResultsTableViewController *) segue.destinationViewController;
         vc.cards = cards;
     }
 

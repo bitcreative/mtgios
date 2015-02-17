@@ -44,6 +44,10 @@
         [items removeObject:self.favoriteButton];
         [self.navigationItem setRightBarButtonItems:items animated:NO];
     }
+
+#ifdef DEBUG
+    NSLog(@"%@", self.card);
+#endif
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
