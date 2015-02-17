@@ -55,19 +55,17 @@
 
 - (void)loadData {
     NSString *path;
-    NSString *finalFilePath = [[NSBundle mainBundle] pathForResource:@"AllSetsExtra" ofType:@"json"];
-    if (!finalFilePath) {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documents = paths[0];
+    NSString *finalFilePath = [NSString stringWithFormat:@"%@/AllSetsExtra.json", documents];
+    NSData *data = [NSData dataWithContentsOfFile:finalFilePath];
+    if (!data) {
         path = [[NSBundle mainBundle] pathForResource:@"AllSetsExtra.json" ofType:@"zip"];
-        NSString *unzipPath = [NSString stringWithFormat:@"%@", [[NSBundle mainBundle] resourcePath]];
+        NSString *unzipPath = documents;
         [SSZipArchive unzipFileAtPath:path toDestination:unzipPath];
     }
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "ResourceNotFoundInspection"
-    path = [NSString stringWithFormat:@"%@/AllSetsExtra.json", [[NSBundle mainBundle] resourcePath]];
-#pragma clang diagnostic pop
-
-    NSData *data = [NSData dataWithContentsOfFile:path];
+    data = [NSData dataWithContentsOfFile:finalFilePath];
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     cards = _.dict(dict).filterValues(^(NSDictionary *set) {
         NSString *type = set[@"type"];

@@ -32,7 +32,6 @@
 		663D52C81A58A52E00222845 /* picture_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 663D52C71A58A52E00222845 /* picture_list@2x.png */; };
 		663D52CA1A58A54200222845 /* picture_list@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 663D52C91A58A54200222845 /* picture_list@3x.png */; };
 		663D52D21A58A76A00222845 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D52D11A58A76A00222845 /* Store.m */; };
-		663D52DE1A59989700222845 /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D52DB1A59989700222845 /* UIImage+ProportionalFill.m */; };
 		663D52DF1A59989700222845 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 663D52DD1A59989700222845 /* UIImage+Tint.m */; };
 		66532C4E1A8D8BEE0030489B /* ColorSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66532C4D1A8D8BEE0030489B /* ColorSearchTableViewController.m */; };
 		66532C551A8D91260030489B /* mana_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 66532C501A8D91260030489B /* mana_b.png */; };
@@ -50,6 +49,7 @@
 		DD5F96E4860075175A3111BA /* CardCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F98BDB213ABD0BAB6B11D /* CardCollectionHeaderView.m */; };
 		DD5F978B49D49D34482A9215 /* CardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9E6F9F3A20DB7F5716AA /* CardCollectionViewCell.m */; };
 		DD5F983F48CEEC4DA1D3EFDF /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9AD58AF71AB9C4BD8296 /* search.png */; };
+		DD5F9B1FD7ADD3F7C9EB0769 /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9B0150CD66D623413CD1 /* UIImage+ProportionalFill.m */; };
 		DD5F9C199612A369DBF0D199 /* search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9F085E4A55C1FFB4D31E /* search@3x.png */; };
 		DD5F9CE2957A3CCCFB8BC1C2 /* CardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F904A2660E9D4644DE13A /* CardDetailViewController.m */; };
 		DD5F9F8329649BA7B8067F51 /* SetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9CF2BD8146F7D8ACC50B /* SetsTableViewController.m */; };
@@ -106,8 +106,6 @@
 		663D52C91A58A54200222845 /* picture_list@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture_list@3x.png"; sourceTree = "<group>"; };
 		663D52D01A58A76A00222845 /* Store.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Store.h; sourceTree = "<group>"; };
 		663D52D11A58A76A00222845 /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Store.m; sourceTree = "<group>"; };
-		663D52DA1A59989700222845 /* UIImage+ProportionalFill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ProportionalFill.h"; sourceTree = "<group>"; };
-		663D52DB1A59989700222845 /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
 		663D52DC1A59989700222845 /* UIImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tint.h"; sourceTree = "<group>"; };
 		663D52DD1A59989700222845 /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tint.m"; sourceTree = "<group>"; };
 		66532C4C1A8D8BEE0030489B /* ColorSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorSearchTableViewController.h; sourceTree = "<group>"; };
@@ -126,6 +124,7 @@
 		DD5F903743D39AB895C4BD65 /* CardCollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCollectionHeaderView.h; sourceTree = "<group>"; };
 		DD5F904A2660E9D4644DE13A /* CardDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDetailViewController.m; sourceTree = "<group>"; };
 		DD5F90B547B19D3A41872676 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewController.m; sourceTree = "<group>"; };
+		DD5F922D3F6FC32C38704117 /* UIImage+ProportionalFill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ProportionalFill.h"; sourceTree = "<group>"; };
 		DD5F927B1DBE8B7B39497AF1 /* SearchResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultsTableViewController.h; sourceTree = "<group>"; };
 		DD5F9661C00D73D836DD54C7 /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewController.h; sourceTree = "<group>"; };
 		DD5F96DF2C1172AF65848311 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
@@ -136,6 +135,7 @@
 		DD5F9A48CA65135C82CD8E5A /* SetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetTableViewCell.m; sourceTree = "<group>"; };
 		DD5F9A8AF89C78D2B21E65F9 /* CardDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDetailViewController.h; sourceTree = "<group>"; };
 		DD5F9AD58AF71AB9C4BD8296 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		DD5F9B0150CD66D623413CD1 /* UIImage+ProportionalFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ProportionalFill.m"; sourceTree = "<group>"; };
 		DD5F9BF1A8F39929F9C0BA9A /* SearchResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsTableViewController.m; sourceTree = "<group>"; };
 		DD5F9CF2BD8146F7D8ACC50B /* SetsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetsTableViewController.m; sourceTree = "<group>"; };
 		DD5F9E6F9F3A20DB7F5716AA /* CardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardCollectionViewCell.m; sourceTree = "<group>"; };
@@ -324,10 +324,10 @@
 		663D52E11A5998A400222845 /* image */ = {
 			isa = PBXGroup;
 			children = (
-				663D52DA1A59989700222845 /* UIImage+ProportionalFill.h */,
-				663D52DB1A59989700222845 /* UIImage+ProportionalFill.m */,
 				663D52DC1A59989700222845 /* UIImage+Tint.h */,
 				663D52DD1A59989700222845 /* UIImage+Tint.m */,
+				DD5F9B0150CD66D623413CD1 /* UIImage+ProportionalFill.m */,
+				DD5F922D3F6FC32C38704117 /* UIImage+ProportionalFill.h */,
 			);
 			name = image;
 			sourceTree = "<group>";
@@ -563,7 +563,6 @@
 				6615F76D1A5F6ACB00240545 /* PriceView.m in Sources */,
 				663D52DF1A59989700222845 /* UIImage+Tint.m in Sources */,
 				663D52A01A58A3BD00222845 /* main.m in Sources */,
-				663D52DE1A59989700222845 /* UIImage+ProportionalFill.m in Sources */,
 				DD5F9F8329649BA7B8067F51 /* SetsTableViewController.m in Sources */,
 				66532C5C1A8D91A20030489B /* CostSearchTableViewCell.m in Sources */,
 				DD5F978B49D49D34482A9215 /* CardCollectionViewCell.m in Sources */,
@@ -577,6 +576,7 @@
 				6615F75C1A5B843D00240545 /* CardDetailHeaderCell.m in Sources */,
 				DD5F925B9C96829CC31A7315 /* SearchTableViewController.m in Sources */,
 				DD5F954B827CCD20BC862DA1 /* SearchResultsTableViewController.m in Sources */,
+				DD5F9B1FD7ADD3F7C9EB0769 /* UIImage+ProportionalFill.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
