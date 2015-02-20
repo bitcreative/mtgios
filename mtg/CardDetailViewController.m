@@ -123,6 +123,8 @@
         [text addAttribute:NSFontAttributeName
                      value:[UIFont fontWithName:@"HelveticaNeue-Thin" size:11]
                      range:range];
+    } else if (section == 4) {
+        text = [[NSMutableAttributedString alloc] initWithString:@"Rulings"];
     }
 
     CardDetailTextHeaderCell *cell = (CardDetailTextHeaderCell *) [self.tableView dequeueReusableCellWithIdentifier:@"cardDetailTextHeader"];
@@ -140,12 +142,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
         return 0;
+    } else if (section == 4) {
+        return [self.card[@"rulings"] count];
     }
     return 1;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return 5;
 }
 
 @end
