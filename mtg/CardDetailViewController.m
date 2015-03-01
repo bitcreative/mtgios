@@ -94,10 +94,17 @@
         [cell setupForCard:self.card inSet:self.set];
         return cell;
     } else if (indexPath.section == 4) {
-        CardRulingsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rulingsCell"
-                                                                         forIndexPath:indexPath];
-        [cell setupForCard:self.card atIndexPath:indexPath];
-        return cell;
+        if ([self.card[@"rulings"] count] > 0) {
+            CardRulingsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rulingsCell"
+                                                                             forIndexPath:indexPath];
+            [cell setupForCard:self.card atIndexPath:indexPath];
+            return cell;
+        } else {
+            CardTextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"textCell"
+                                                                          forIndexPath:indexPath];
+            cell.cardText.attributedText = [[NSAttributedString alloc] initWithString:@"No rulings available"];
+            return cell;
+        }
     }
 
     return [[UITableViewCell alloc] init];
@@ -148,7 +155,8 @@
     if (section == 0) {
         return 0;
     } else if (section == 4) {
-        return [self.card[@"rulings"] count];
+        NSInteger count = [self.card[@"rulings"] count];
+        return (count == 0) ? 1 : count;
     }
     return 1;
 }

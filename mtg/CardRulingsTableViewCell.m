@@ -14,7 +14,7 @@
     self.card = card;
 
     NSArray *rulings = card[@"rulings"];
-    NSDictionary *ruling = rulings[(uint)indexPath.row];
+    NSDictionary *ruling = rulings[(uint) indexPath.row];
 
     [self updatedAttributedText:ruling[@"text"]];
 

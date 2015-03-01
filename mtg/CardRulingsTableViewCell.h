@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *cardText;
 @property (weak, nonatomic) IBOutlet UILabel *rulingsDate;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *dateWidthConstraint;
+
 - (void)setupForCard:(NSDictionary *)card atIndexPath:(NSIndexPath *)indexPath;
 
 @end

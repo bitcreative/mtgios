@@ -225,7 +225,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omT-OK-67A">
-                                            <rect key="frame" x="80" y="8" width="512" height="14.5"/>
+                                            <rect key="frame" x="80" y="8" width="512" height="27.5"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Rulings...">
                                                     <attributes>
@@ -257,6 +257,7 @@
                                     <constraints>
                                         <constraint firstItem="omT-OK-67A" firstAttribute="leading" secondItem="GHE-Je-LmC" secondAttribute="trailing" constant="8" id="ARg-Wl-Tva"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="omT-OK-67A" secondAttribute="trailing" id="C7M-iF-cg2"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="omT-OK-67A" secondAttribute="bottom" id="DYP-dO-O2u"/>
                                         <constraint firstItem="omT-OK-67A" firstAttribute="top" secondItem="tlZ-bA-qab" secondAttribute="topMargin" id="kyo-NB-ZP6"/>
                                         <constraint firstItem="GHE-Je-LmC" firstAttribute="leading" secondItem="tlZ-bA-qab" secondAttribute="leadingMargin" id="lBT-Lb-MXt"/>
                                         <constraint firstItem="GHE-Je-LmC" firstAttribute="top" secondItem="tlZ-bA-qab" secondAttribute="topMargin" id="uc2-wq-0Kz"/>
@@ -264,6 +265,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="cardText" destination="omT-OK-67A" id="CfL-lg-1hC"/>
+                                    <outlet property="dateWidthConstraint" destination="0vg-tD-Tab" id="UJX-in-tSZ"/>
                                     <outlet property="rulingsDate" destination="GHE-Je-LmC" id="f5I-eL-kXo"/>
                                 </connections>
                             </tableViewCell>
