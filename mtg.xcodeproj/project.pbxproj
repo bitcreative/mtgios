@@ -43,6 +43,8 @@
 		66A55FD51A6DAF94009DFAE1 /* AllSetsExtra.json.zip in Resources */ = {isa = PBXBuildFile; fileRef = 66A55FD41A6DAF94009DFAE1 /* AllSetsExtra.json.zip */; };
 		66A55FD71A6DB579009DFAE1 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A55FD61A6DB579009DFAE1 /* libz.dylib */; };
 		66B861041A7726C500A56AA9 /* CostSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B861031A7726C500A56AA9 /* CostSearchTableViewController.m */; };
+		66EDB7B41AA2A1F700193A03 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66EDB7B21AA2A1F700193A03 /* Crashlytics.framework */; };
+		66EDB7B51AA2A1F700193A03 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66EDB7B31AA2A1F700193A03 /* Fabric.framework */; };
 		DD5F925B9C96829CC31A7315 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F90B547B19D3A41872676 /* SearchTableViewController.m */; };
 		DD5F954B827CCD20BC862DA1 /* SearchResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9BF1A8F39929F9C0BA9A /* SearchResultsTableViewController.m */; };
 		DD5F95A8D4E0AD721EEC061A /* SetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9A48CA65135C82CD8E5A /* SetTableViewCell.m */; };
@@ -121,6 +123,8 @@
 		66A55FD61A6DB579009DFAE1 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		66B861021A7726C500A56AA9 /* CostSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CostSearchTableViewController.h; sourceTree = "<group>"; };
 		66B861031A7726C500A56AA9 /* CostSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CostSearchTableViewController.m; sourceTree = "<group>"; };
+		66EDB7B21AA2A1F700193A03 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		66EDB7B31AA2A1F700193A03 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		DD5F903743D39AB895C4BD65 /* CardCollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCollectionHeaderView.h; sourceTree = "<group>"; };
 		DD5F904A2660E9D4644DE13A /* CardDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDetailViewController.m; sourceTree = "<group>"; };
 		DD5F90B547B19D3A41872676 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewController.m; sourceTree = "<group>"; };
@@ -149,7 +153,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				66A55FD71A6DB579009DFAE1 /* libz.dylib in Frameworks */,
+				66EDB7B51AA2A1F700193A03 /* Fabric.framework in Frameworks */,
 				14581EE80E01D5586428D350 /* libPods-mtg.a in Frameworks */,
+				66EDB7B41AA2A1F700193A03 /* Crashlytics.framework in Frameworks */,
 				6615F7721A60D4E400240545 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,6 +182,8 @@
 		1854844DD1E635D05A9B8744 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				66EDB7B21AA2A1F700193A03 /* Crashlytics.framework */,
+				66EDB7B31AA2A1F700193A03 /* Fabric.framework */,
 				66A55FD61A6DB579009DFAE1 /* libz.dylib */,
 				6615F7711A60D4E400240545 /* CloudKit.framework */,
 				324A5DD15157CBF6F27121D4 /* libPods-mtg.a */,
@@ -408,6 +416,7 @@
 				663D52971A58A3BD00222845 /* Frameworks */,
 				663D52981A58A3BD00222845 /* Resources */,
 				DBF7731985145A1A5697DAE5 /* Copy Pods Resources */,
+				66EDB7B11AA2A17F00193A03 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -519,6 +528,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		66EDB7B11AA2A17F00193A03 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run f35371cf9d76f8be5fbafda2f5f977935c4dc37b 302c42acd2d073de1dcd0dcf150957eb6212a71eaa9d8db6ba37f16eb67b0002";
+		};
 		C25182AD4CCCB0C23E71EA80 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -702,6 +724,10 @@
 				CODE_SIGN_ENTITLEMENTS = mtg/mtg.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = mtg/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -718,6 +744,10 @@
 				CODE_SIGN_ENTITLEMENTS = mtg/mtg.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = mtg/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

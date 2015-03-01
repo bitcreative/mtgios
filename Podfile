@@ -9,6 +9,7 @@ target 'mtg' do
   pod 'Underscore.m', :git => 'https://github.com/robb/Underscore.m.git', :branch => 'development'
   pod 'CSStickyHeaderFlowLayout', '~> 0.2.3'
   pod 'SSZipArchive', '~> 0.3.2'
+  pod 'Localytics', '~> 3.0'
   pod 'PromiseKit'
   pod 'PromiseKit-AFNetworking'
 end

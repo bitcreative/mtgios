@@ -6,6 +6,10 @@
 //  Copyright (c) 2015 Omar Estrella. All rights reserved.
 //
 
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+#import <Localytics.h>
+
 #import "AppDelegate.h"
 #import "Store.h"
 
@@ -19,7 +23,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [[Store sharedStore] loadData];
-    
+
+    [Fabric with:@[CrashlyticsKit]];
+    [Localytics autoIntegrate:@"7ed5c0ea00a1d94b1ff13eb-707db9d8-bfb8-11e4-2d88-004a77f8b47f" launchOptions:launchOptions];
+
     return YES;
 }
 

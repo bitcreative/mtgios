@@ -7,6 +7,7 @@
 //
 
 #import <CSStickyHeaderFlowLayout.h>
+#import <Crashlytics/Crashlytics.h>
 
 #import "CardsCollectionViewController.h"
 #import "CardCollectionHeaderView.h"

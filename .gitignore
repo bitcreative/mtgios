@@ -4,3 +4,4 @@ Podfile.lock
 .idea/
 
 *.xcworkspace
+*.framework
