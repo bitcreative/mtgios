@@ -18,5 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *cardText;
 
 - (PMKPromise *)setupForIndexPath:(NSIndexPath *)indexPath;
+- (PMKPromise *)updatedAttributedText:(NSString *)text;
 
 @end

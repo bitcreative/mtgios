@@ -219,6 +219,54 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="rulingsCell" id="MY3-bu-4RY" customClass="CardRulingsTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MY3-bu-4RY" id="tlZ-bA-qab">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="omT-OK-67A">
+                                            <rect key="frame" x="80" y="8" width="512" height="14.5"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Rulings...">
+                                                    <attributes>
+                                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHE-Je-LmC">
+                                            <rect key="frame" x="8" y="8" width="64" height="12"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="64" id="0vg-tD-Tab"/>
+                                            </constraints>
+                                            <attributedString key="attributedText">
+                                                <fragment content="2015-12-01">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="omT-OK-67A" firstAttribute="leading" secondItem="GHE-Je-LmC" secondAttribute="trailing" constant="8" id="ARg-Wl-Tva"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="omT-OK-67A" secondAttribute="trailing" id="C7M-iF-cg2"/>
+                                        <constraint firstItem="omT-OK-67A" firstAttribute="top" secondItem="tlZ-bA-qab" secondAttribute="topMargin" id="kyo-NB-ZP6"/>
+                                        <constraint firstItem="GHE-Je-LmC" firstAttribute="leading" secondItem="tlZ-bA-qab" secondAttribute="leadingMargin" id="lBT-Lb-MXt"/>
+                                        <constraint firstItem="GHE-Je-LmC" firstAttribute="top" secondItem="tlZ-bA-qab" secondAttribute="topMargin" id="uc2-wq-0Kz"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cardText" destination="omT-OK-67A" id="CfL-lg-1hC"/>
+                                    <outlet property="rulingsDate" destination="GHE-Je-LmC" id="f5I-eL-kXo"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="82F-AG-3Ls" id="uYS-Oa-TEu"/>
@@ -595,7 +643,7 @@
         <!--More-->
         <scene sceneID="JK4-Xj-AQx">
             <objects>
-                <tableViewController id="Mwb-hP-wgU" sceneMemberID="viewController">
+                <tableViewController title="More" id="Mwb-hP-wgU" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="XLL-w3-pn3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -616,6 +664,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="61V-Uw-ezu" kind="show" id="eHK-ZK-GS9"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="U7y-Ft-Ubq" style="IBUITableViewCellStyleDefault" id="zlv-EL-xNZ">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -630,6 +681,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Bx9-Iu-olJ" kind="show" id="uQM-Wg-yrQ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -648,6 +702,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="1cr-qK-Oaq" kind="show" id="obv-9F-gGZ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -662,6 +719,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SPG-Tf-v2p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="672" y="2817"/>
+        </scene>
+        <!--Feedback-->
+        <scene sceneID="ea5-dU-SNX">
+            <objects>
+                <viewController title="Feedback" id="61V-Uw-ezu" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gkz-IE-6xP"/>
+                        <viewControllerLayoutGuide type="bottom" id="CZD-Jq-rpp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fdm-Y7-sbg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xyb-Bw-PiP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-148" y="3554"/>
+        </scene>
+        <!--Frequently Asked-->
+        <scene sceneID="oU8-zy-hlj">
+            <objects>
+                <viewController title="Frequently Asked" id="Bx9-Iu-olJ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rsE-gf-TbT"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lys-hC-T8q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WG2-ou-v7b">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w7b-2M-Z3k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="472" y="3554"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="79a-WP-Ki0">
+            <objects>
+                <viewController title="About" id="1cr-qK-Oaq" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wNb-O7-4sS"/>
+                        <viewControllerLayoutGuide type="bottom" id="zDA-Sd-cK8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Lot-Y6-beR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wY0-I6-TP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1091" y="3554"/>
         </scene>
         <!--More-->
         <scene sceneID="f76-Pj-RpW">

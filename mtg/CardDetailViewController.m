@@ -15,6 +15,7 @@
 #import "CardTextTableViewCell.h"
 #import "CardPriceTableViewCell.h"
 #import "Store.h"
+#import "CardRulingsTableViewCell.h"
 
 @implementation CardDetailViewController
 
@@ -83,9 +84,7 @@
                                                                       forIndexPath:indexPath];
         cell.card = self.card;
         if (!cell.loaded) {
-            [cell setupForIndexPath:indexPath].then(^(CardTextTableViewCell *cellInstance) {
-                NSLog(@"Loaded cell");
-            });
+            [cell setupForIndexPath:indexPath];
         }
 
         return cell;
@@ -93,6 +92,12 @@
         CardPriceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"priceCell"
                                                                        forIndexPath:indexPath];
         [cell setupForCard:self.card inSet:self.set];
+        return cell;
+    } else if (indexPath.section == 4) {
+        CardRulingsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rulingsCell"
+                                                                         forIndexPath:indexPath];
+        [cell setupForCard:self.card atIndexPath:indexPath];
+        return cell;
     }
 
     return [[UITableViewCell alloc] init];

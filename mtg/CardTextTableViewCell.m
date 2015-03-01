@@ -11,9 +11,9 @@
 
 @implementation CardTextTableViewCell
 
-- (PMKPromise *)updatedAttributedText:(NSIndexPath *)indexPath {
+- (PMKPromise *)updatedAttributedText:(NSString *)text {
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    NSString *cardString = self.card[@"text"];
+    NSString *cardString = text;
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:cardString];
     NSRegularExpression *symbolRegex = [NSRegularExpression regularExpressionWithPattern:@"\\{([^}]+)\\}"
                                                                                  options:NSRegularExpressionCaseInsensitive
@@ -58,6 +58,7 @@
             }
         } else {
             self.cardText.text = cardString;
+            self.cardText.attributedText = string;
 
             fulfill(self);
         }
@@ -68,7 +69,7 @@
 
 - (PMKPromise *)setupForIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1) {
-        return [self updatedAttributedText:indexPath];
+        return [self updatedAttributedText:self.card[@"text"]];
     } else if (indexPath.section == 2) {
         if (!self.card[@"flavor"]) {
             self.cardText.text = @"No flavor text";

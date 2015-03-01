@@ -45,6 +45,7 @@
 		66B861041A7726C500A56AA9 /* CostSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B861031A7726C500A56AA9 /* CostSearchTableViewController.m */; };
 		66EDB7B41AA2A1F700193A03 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66EDB7B21AA2A1F700193A03 /* Crashlytics.framework */; };
 		66EDB7B51AA2A1F700193A03 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66EDB7B31AA2A1F700193A03 /* Fabric.framework */; };
+		66EDB7B81AA2BA3C00193A03 /* CardRulingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EDB7B71AA2BA3C00193A03 /* CardRulingsTableViewCell.m */; };
 		DD5F925B9C96829CC31A7315 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F90B547B19D3A41872676 /* SearchTableViewController.m */; };
 		DD5F954B827CCD20BC862DA1 /* SearchResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9BF1A8F39929F9C0BA9A /* SearchResultsTableViewController.m */; };
 		DD5F95A8D4E0AD721EEC061A /* SetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9A48CA65135C82CD8E5A /* SetTableViewCell.m */; };
@@ -125,6 +126,8 @@
 		66B861031A7726C500A56AA9 /* CostSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CostSearchTableViewController.m; sourceTree = "<group>"; };
 		66EDB7B21AA2A1F700193A03 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		66EDB7B31AA2A1F700193A03 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		66EDB7B61AA2BA3C00193A03 /* CardRulingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardRulingsTableViewCell.h; sourceTree = "<group>"; };
+		66EDB7B71AA2BA3C00193A03 /* CardRulingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardRulingsTableViewCell.m; sourceTree = "<group>"; };
 		DD5F903743D39AB895C4BD65 /* CardCollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCollectionHeaderView.h; sourceTree = "<group>"; };
 		DD5F904A2660E9D4644DE13A /* CardDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardDetailViewController.m; sourceTree = "<group>"; };
 		DD5F90B547B19D3A41872676 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewController.m; sourceTree = "<group>"; };
@@ -202,6 +205,8 @@
 				6615F7641A5CD3A100240545 /* CardTextTableViewCell.m */,
 				6615F7661A5F69EF00240545 /* CardPriceTableViewCell.h */,
 				6615F7671A5F69EF00240545 /* CardPriceTableViewCell.m */,
+				66EDB7B61AA2BA3C00193A03 /* CardRulingsTableViewCell.h */,
+				66EDB7B71AA2BA3C00193A03 /* CardRulingsTableViewCell.m */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -596,6 +601,7 @@
 				DD5F95A8D4E0AD721EEC061A /* SetTableViewCell.m in Sources */,
 				DD5F9CE2957A3CCCFB8BC1C2 /* CardDetailViewController.m in Sources */,
 				6615F75C1A5B843D00240545 /* CardDetailHeaderCell.m in Sources */,
+				66EDB7B81AA2BA3C00193A03 /* CardRulingsTableViewCell.m in Sources */,
 				DD5F925B9C96829CC31A7315 /* SearchTableViewController.m in Sources */,
 				DD5F954B827CCD20BC862DA1 /* SearchResultsTableViewController.m in Sources */,
 				DD5F9B1FD7ADD3F7C9EB0769 /* UIImage+ProportionalFill.m in Sources */,
