@@ -42,7 +42,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
 
     NSInteger number = indexPath.row;
-    NSString *text = [NSString stringWithFormat:@"%d", number];
+    NSString *text = [NSString stringWithFormat:@"%ld", (long)number];
     if (number >= 7) {
         text = [text stringByAppendingString:@"+"];
     }
@@ -50,7 +50,7 @@
     cell.textLabel.text = text;
 
     if ([self.manaCosts containsObject:@(indexPath.row)]) {
-        [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:nil];
+        [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     }
     
     return cell;

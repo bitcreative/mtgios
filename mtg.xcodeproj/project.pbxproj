@@ -43,8 +43,6 @@
 		66A55FD51A6DAF94009DFAE1 /* AllSetsExtra.json.zip in Resources */ = {isa = PBXBuildFile; fileRef = 66A55FD41A6DAF94009DFAE1 /* AllSetsExtra.json.zip */; };
 		66A55FD71A6DB579009DFAE1 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A55FD61A6DB579009DFAE1 /* libz.dylib */; };
 		66B861041A7726C500A56AA9 /* CostSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B861031A7726C500A56AA9 /* CostSearchTableViewController.m */; };
-		66EDB7B41AA2A1F700193A03 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66EDB7B21AA2A1F700193A03 /* Crashlytics.framework */; };
-		66EDB7B51AA2A1F700193A03 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66EDB7B31AA2A1F700193A03 /* Fabric.framework */; };
 		66EDB7B81AA2BA3C00193A03 /* CardRulingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EDB7B71AA2BA3C00193A03 /* CardRulingsTableViewCell.m */; };
 		DD5F925B9C96829CC31A7315 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F90B547B19D3A41872676 /* SearchTableViewController.m */; };
 		DD5F954B827CCD20BC862DA1 /* SearchResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9BF1A8F39929F9C0BA9A /* SearchResultsTableViewController.m */; };
@@ -124,8 +122,6 @@
 		66A55FD61A6DB579009DFAE1 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		66B861021A7726C500A56AA9 /* CostSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CostSearchTableViewController.h; sourceTree = "<group>"; };
 		66B861031A7726C500A56AA9 /* CostSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CostSearchTableViewController.m; sourceTree = "<group>"; };
-		66EDB7B21AA2A1F700193A03 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		66EDB7B31AA2A1F700193A03 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		66EDB7B61AA2BA3C00193A03 /* CardRulingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardRulingsTableViewCell.h; sourceTree = "<group>"; };
 		66EDB7B71AA2BA3C00193A03 /* CardRulingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardRulingsTableViewCell.m; sourceTree = "<group>"; };
 		DD5F903743D39AB895C4BD65 /* CardCollectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCollectionHeaderView.h; sourceTree = "<group>"; };
@@ -156,9 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66A55FD71A6DB579009DFAE1 /* libz.dylib in Frameworks */,
-				66EDB7B51AA2A1F700193A03 /* Fabric.framework in Frameworks */,
 				14581EE80E01D5586428D350 /* libPods-mtg.a in Frameworks */,
-				66EDB7B41AA2A1F700193A03 /* Crashlytics.framework in Frameworks */,
 				6615F7721A60D4E400240545 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,8 +179,6 @@
 		1854844DD1E635D05A9B8744 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				66EDB7B21AA2A1F700193A03 /* Crashlytics.framework */,
-				66EDB7B31AA2A1F700193A03 /* Fabric.framework */,
 				66A55FD61A6DB579009DFAE1 /* libz.dylib */,
 				6615F7711A60D4E400240545 /* CloudKit.framework */,
 				324A5DD15157CBF6F27121D4 /* libPods-mtg.a */,
@@ -544,7 +536,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run f35371cf9d76f8be5fbafda2f5f977935c4dc37b 302c42acd2d073de1dcd0dcf150957eb6212a71eaa9d8db6ba37f16eb67b0002";
+			shellScript = "FILE=\"${SRCROOT}/HockeySDK-iOS/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n  \"$FILE\"\nfi";
 		};
 		C25182AD4CCCB0C23E71EA80 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

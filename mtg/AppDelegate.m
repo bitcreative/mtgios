@@ -6,8 +6,7 @@
 //  Copyright (c) 2015 Omar Estrella. All rights reserved.
 //
 
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
+#import <HockeySDK.h>
 #import <Localytics.h>
 
 #import "AppDelegate.h"
@@ -24,8 +23,12 @@
     // Override point for customization after application launch.
     [[Store sharedStore] loadData];
 
-    [Fabric with:@[CrashlyticsKit]];
     [Localytics autoIntegrate:@"7ed5c0ea00a1d94b1ff13eb-707db9d8-bfb8-11e4-2d88-004a77f8b47f" launchOptions:launchOptions];
+
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"60ba99ebafc509edba146c85b722303b"];
+    [[BITHockeyManager sharedHockeyManager] setDebugLogEnabled:YES];
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
 
     return YES;
 }

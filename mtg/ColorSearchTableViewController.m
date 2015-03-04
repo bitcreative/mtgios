@@ -74,11 +74,11 @@
 
     if (indexPath.section == 0) {
         if ([self.include containsObject:color]) {
-            [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:nil];
+            [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
         }
     } else if (indexPath.section == 1) {
         if ([self.exclude containsObject:color]) {
-            [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:nil];
+            [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
         }
     }
 

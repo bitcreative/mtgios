@@ -10,6 +10,7 @@ target 'mtg' do
   pod 'CSStickyHeaderFlowLayout', '~> 0.2.3'
   pod 'SSZipArchive', '~> 0.3.2'
   pod 'Localytics', '~> 3.0'
+  pod 'HockeySDK', '~> 3.6.2'
   pod 'PromiseKit'
   pod 'PromiseKit-AFNetworking'
 end

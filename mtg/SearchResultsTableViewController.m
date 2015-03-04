@@ -20,7 +20,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    NSLog(@"%d", self.cards.count);
     cell.textLabel.text = self.cards[(uint)indexPath.row][@"name"];
     return cell;
 }

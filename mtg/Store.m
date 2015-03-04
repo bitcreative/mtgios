@@ -146,7 +146,6 @@
 
 - (PMKPromise *)pricesForCard:(NSDictionary *)card inSet:(NSDictionary *)set {
     NSString *setCode = set[@"code"];
-
     NSString *setName = set[@"name"];
     setName = [[setName stringByReplacingOccurrencesOfString:@" " withString:@"-"] lowercaseString];
 
