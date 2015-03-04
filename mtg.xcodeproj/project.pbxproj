@@ -53,6 +53,7 @@
 		DD5F9B1FD7ADD3F7C9EB0769 /* UIImage+ProportionalFill.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9B0150CD66D623413CD1 /* UIImage+ProportionalFill.m */; };
 		DD5F9C199612A369DBF0D199 /* search@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD5F9F085E4A55C1FFB4D31E /* search@3x.png */; };
 		DD5F9CE2957A3CCCFB8BC1C2 /* CardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F904A2660E9D4644DE13A /* CardDetailViewController.m */; };
+		DD5F9DEF5A6E4D36F34457DB /* MoreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F99E3B3353828BF4C6976 /* MoreTableViewController.m */; };
 		DD5F9F8329649BA7B8067F51 /* SetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5F9CF2BD8146F7D8ACC50B /* SetsTableViewController.m */; };
 		DD5F9FFC9AF9E9EE6DA0A6C2 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD5F96DF2C1172AF65848311 /* search@2x.png */; };
 /* End PBXBuildFile section */
@@ -135,6 +136,8 @@
 		DD5F96FFF7D6F6B356CD720F /* CardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCollectionViewCell.h; sourceTree = "<group>"; };
 		DD5F98BDB213ABD0BAB6B11D /* CardCollectionHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardCollectionHeaderView.m; sourceTree = "<group>"; };
 		DD5F9909F436264E00DF6AEA /* SetsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetsTableViewController.h; sourceTree = "<group>"; };
+		DD5F99DDB7A577A94EEA65DA /* MoreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableViewController.h; sourceTree = "<group>"; };
+		DD5F99E3B3353828BF4C6976 /* MoreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewController.m; sourceTree = "<group>"; };
 		DD5F9A48CA65135C82CD8E5A /* SetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetTableViewCell.m; sourceTree = "<group>"; };
 		DD5F9A8AF89C78D2B21E65F9 /* CardDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardDetailViewController.h; sourceTree = "<group>"; };
 		DD5F9AD58AF71AB9C4BD8296 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
@@ -283,6 +286,8 @@
 				DD5F9661C00D73D836DD54C7 /* SearchTableViewController.h */,
 				DD5F9BF1A8F39929F9C0BA9A /* SearchResultsTableViewController.m */,
 				DD5F927B1DBE8B7B39497AF1 /* SearchResultsTableViewController.h */,
+				DD5F99E3B3353828BF4C6976 /* MoreTableViewController.m */,
+				DD5F99DDB7A577A94EEA65DA /* MoreTableViewController.h */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 				DD5F9E443874415784F0CF2B /* card */,
 				DD5F98E39E5FB91D91805653 /* sets */,
 				DD5F98CBCF210E24559E1594 /* search */,
+				DD5F97A0D2869EF0064B9F7D /* more */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -358,6 +364,13 @@
 				66532C4D1A8D8BEE0030489B /* ColorSearchTableViewController.m */,
 			);
 			name = search;
+			sourceTree = "<group>";
+		};
+		DD5F97A0D2869EF0064B9F7D /* more */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = more;
 			sourceTree = "<group>";
 		};
 		DD5F98CBCF210E24559E1594 /* search */ = {
@@ -597,6 +610,7 @@
 				DD5F925B9C96829CC31A7315 /* SearchTableViewController.m in Sources */,
 				DD5F954B827CCD20BC862DA1 /* SearchResultsTableViewController.m in Sources */,
 				DD5F9B1FD7ADD3F7C9EB0769 /* UIImage+ProportionalFill.m in Sources */,
+				DD5F9DEF5A6E4D36F34457DB /* MoreTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

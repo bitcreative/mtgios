@@ -645,7 +645,7 @@
         <!--More-->
         <scene sceneID="JK4-Xj-AQx">
             <objects>
-                <tableViewController title="More" id="Mwb-hP-wgU" sceneMemberID="viewController">
+                <tableViewController title="More" id="Mwb-hP-wgU" customClass="MoreTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="XLL-w3-pn3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -666,26 +666,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="61V-Uw-ezu" kind="show" id="eHK-ZK-GS9"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="U7y-Ft-Ubq" style="IBUITableViewCellStyleDefault" id="zlv-EL-xNZ">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zlv-EL-xNZ" id="Cth-6r-tar">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Frequently Asked Questions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="U7y-Ft-Ubq">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Bx9-Iu-olJ" kind="show" id="uQM-Wg-yrQ"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -722,42 +702,6 @@
             </objects>
             <point key="canvasLocation" x="672" y="2817"/>
         </scene>
-        <!--Feedback-->
-        <scene sceneID="ea5-dU-SNX">
-            <objects>
-                <viewController title="Feedback" id="61V-Uw-ezu" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gkz-IE-6xP"/>
-                        <viewControllerLayoutGuide type="bottom" id="CZD-Jq-rpp"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="fdm-Y7-sbg">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xyb-Bw-PiP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-148" y="3554"/>
-        </scene>
-        <!--Frequently Asked-->
-        <scene sceneID="oU8-zy-hlj">
-            <objects>
-                <viewController title="Frequently Asked" id="Bx9-Iu-olJ" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rsE-gf-TbT"/>
-                        <viewControllerLayoutGuide type="bottom" id="Lys-hC-T8q"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="WG2-ou-v7b">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w7b-2M-Z3k" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="472" y="3554"/>
-        </scene>
         <!--About-->
         <scene sceneID="79a-WP-Ki0">
             <objects>
@@ -774,7 +718,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wY0-I6-TP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1091" y="3554"/>
+            <point key="canvasLocation" x="672" y="3612"/>
         </scene>
         <!--More-->
         <scene sceneID="f76-Pj-RpW">
